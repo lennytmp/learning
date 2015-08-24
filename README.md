@@ -28,3 +28,5 @@ Topics are borrowed from the book "Cracking the Coding Interview".
 * Memory (Stack vs Heap)
 * Recursion
 * Big-O Time
+* Balancer
+* Deadlock
