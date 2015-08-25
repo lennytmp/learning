@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class MergeSort {
   static boolean debug = false;
+  static int inversions = 0;
 
 
   public static void main(String[] args) {
@@ -20,6 +21,7 @@ public class MergeSort {
       MergeSort.printArr(arr2);
     }
     int time = Math.round((System.nanoTime() - t)/1000000);
+    System.out.println("Number of inversions " + Integer.toString(inversions));
     System.out.println("Time elapsed " + Integer.toString(time) + "ms");
   }
 
@@ -42,11 +44,12 @@ public class MergeSort {
       int i = 0, j = 0;
       int[] result = new int[endIndex - startIndex];
       for (int k = 0; k < result.length; k++) {
-        if (i < left.length && (j >= right.length || left[i] < right[j])) {
+        if (i < left.length && (j >= right.length || left[i] <= right[j])) {
           result[k] = left[i];
           i++;
         } else {
           result[k] = right[j];
+          MergeSort.inversions += left.length - i;
           j++;
         }
       }
