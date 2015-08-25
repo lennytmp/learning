@@ -14,7 +14,7 @@ public class MergeSort {
       MergeSort.printArr(arr);
     }
 
-    int[] arr2 = MergeSort.sort(arr);
+    int[] arr2 = MergeSort.sort(arr, 0, arr.length);
     if (MergeSort.debug) {
       System.out.print("Result: ");
       MergeSort.printArr(arr2);
@@ -34,14 +34,14 @@ public class MergeSort {
   }
 
 
-  public static int[] sort(int[] arr) {
-    if (arr.length > 1) {
-      int l = Math.round(arr.length / 2);
-      int[] left = MergeSort.sort(Arrays.copyOfRange(arr, 0, l));
-      int[] right = MergeSort.sort(Arrays.copyOfRange(arr, l, arr.length));
+  public static int[] sort(int[] arr, int startIndex, int endIndex) {
+    if ((endIndex - startIndex) > 1) {
+      int l = startIndex + Math.round((endIndex - startIndex) / 2);
+      int[] left = MergeSort.sort(arr, startIndex, l);
+      int[] right = MergeSort.sort(arr, l, endIndex);
       int i = 0, j = 0;
-      int[] result = new int[arr.length];
-      for (int k = 0; k < arr.length; k++) {
+      int[] result = new int[endIndex - startIndex];
+      for (int k = 0; k < result.length; k++) {
         if (i < left.length && (j >= right.length || left[i] < right[j])) {
           result[k] = left[i];
           i++;
@@ -52,7 +52,7 @@ public class MergeSort {
       }
       return result;
     }
-    return arr;
+    return new int[]{arr[startIndex]};
   }
 
 

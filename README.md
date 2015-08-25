@@ -17,7 +17,7 @@ Topics are borrowed from the book "Cracking the Coding Interview".
 * Breadth first search
 * Depth first search
 * Binary search
-* Merge sort
+* [DONE] Merge sort
 * Quick sort
 * Tree insert / find etc.
 
