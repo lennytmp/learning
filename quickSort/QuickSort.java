@@ -1,6 +1,9 @@
 import java.util.Arrays;
 import java.util.Random;
 
+// TODO (levvy): use Utils file for standard functions
+// TODO (levvy): use inheritance for both sorting algorithms (invesions, time, arguments)
+
 
 public class QuickSort {
   static long inversions = 0;
