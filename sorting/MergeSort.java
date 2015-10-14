@@ -1,5 +1,5 @@
 /**
- * Performs Merge Sort algorithm,
+ * Performs Merge Sort algorithm.
  */
 
 
@@ -20,7 +20,7 @@ public class MergeSort {
   public static void main(String[] args) {
     int[] arr = {95, 21, 12, 83, 1, 5};
     System.out.println("Input: " + Arrays.toString(arr));
-    int[] result = sort(arr, 0, arr.length);
+    int[] result = sort(arr, 0, arr.length - 1);
     System.out.println("Result: " + Arrays.toString(result));
     System.out.println("Inversions: " + Long.toString(inversions));
   }

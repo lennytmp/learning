@@ -1,5 +1,5 @@
 /**
- * Performs Quick Sort algorithm.
+ * Performs Random Select Algorithm.
  */
 
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 
-public class QuickSort {
+public class RandomSelect {
 
 
   // Generator of random numbers.
@@ -25,25 +25,28 @@ public class QuickSort {
    * @export
    */
   public static void main(String[] args) {
-    int[] arr = {95, 21, 12, 83, 1, 5};
+    int[] arr = {98, 12, 1, 23, 5, 82, 11, 4, 8, 56};
+    int order = 5; // 12
     System.out.println("Input: " + Arrays.toString(arr));
-    int[] result = sort(arr, 0, arr.length - 1);
-    System.out.println("Result: " + Arrays.toString(result));
+    int result = select(arr, 0, arr.length - 1, order);
+    System.out.print("Order: " + Integer.toString(order));
+    System.out.println(" Result: " + Integer.toString(result));
     System.out.println("Inversions: " + Long.toString(inversions));
+    System.out.println("Array state: " + Arrays.toString(arr));
   }
 
 
   /*
-   * Recursively sorts an array of items.
-   * Algorithm description: https://en.wikipedia.org/wiki/Quicksort
-   * @param arr Array to sort.
-   * @param from From which element sorting is needed.
-   * @param to Till which element sorting is needed.
-   * @return Array of sorted elements.
+   * Recursively selects the element at order place from the array.
+   * @param arr Array to select from.
+   * @param from From which element selection is needed.
+   * @param to Till which element seledction is needed.
+   * @param order Order statistics. 
+   * @return Integer the element corresponding to order statistics.
    */
-  public static int[] sort(int[] arr, int from, int to) {
-    if (to == from + 1 || to <= from) {
-      return arr;
+  public static int select(int[] arr, int from, int to, int order) {
+    if (to == from && order == 1) {
+      return arr[from];
     }
     Random generator = new Random();
     arr = swap(arr, from, from + generator.nextInt(to - from));
@@ -56,9 +59,13 @@ public class QuickSort {
       i++;
     }
     arr = swap(arr, from, j - 1);
-    arr = sort(arr, from, j - 1);
-    arr = sort(arr, j, to);
-    return arr;
+    if ((j - from) < order) {
+      return select(arr, j, to, order - (j - from));
+    }
+    if ((j - from) > order) {
+      return select(arr, from, j - 2, order);
+    }
+    return arr[from + order - 1]; // j - 1 == order
   }
 
 
