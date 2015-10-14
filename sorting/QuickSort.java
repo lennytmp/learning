@@ -3,16 +3,34 @@
  */
 
 
-package sorting;
-import sorting.Sort;
+import java.util.Arrays;
 import java.util.Random;
 
 
-public class QuickSort extends Sort {
+public class QuickSort {
 
 
   // Generator of random numbers.
   Random generator = new Random();
+
+  // Stores the number of inversions.
+  static long inversions = 0;
+
+
+
+  /*
+   * Sets an array, sorts it and prints input, result and number
+   * of inversions. 
+   * @param args Array of arguments for launching the program.
+   * @export
+   */
+  public static void main(String[] args) {
+    int[] arr = {95, 21, 12, 83, 1, 5};
+    System.out.println("Input: " + Arrays.toString(arr));
+    int[] result = sort(arr, 0, arr.length);
+    System.out.println("Result: " + Arrays.toString(result));
+    System.out.println("Inversions: " + Long.toString(inversions));
+  }
 
 
   /*
@@ -51,7 +69,7 @@ public class QuickSort extends Sort {
    * @param pos2 Position of the second element.
    * @return Array with swapped elements. 
    */
-  public static int[] swap(int[] arr, int pos1, int pos2) {
+  private static int[] swap(int[] arr, int pos1, int pos2) {
     if (pos1 == pos2) {
       return arr;
     }
