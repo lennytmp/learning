@@ -3,11 +3,25 @@
  */
 
 
-package sorting;
-import sorting.Sort;
+import java.util.Arrays;
 
 
-public class MergeSort extends Sort {
+public class MergeSort {
+  static long inversions = 0;
+
+  /*
+   * Sets an array, sorts it and prints input, result and number
+   * of inversions. 
+   * @param args Array of arguments for launching the program.
+   * @export
+   */
+  public static void main(String[] args) {
+    int[] arr = {95, 21, 12, 83, 1, 5};
+    System.out.println("Input: " + Arrays.toString(arr));
+    int[] result = sort(arr, 0, arr.length);
+    System.out.println("Result: " + Arrays.toString(result));
+    System.out.println("Inversions: " + Long.toString(inversions));
+  }
 
 
   /*
@@ -19,6 +33,7 @@ public class MergeSort extends Sort {
    * @param from From which element sorting is needed.
    * @param to Till which element sorting is needed.
    * @return Array of sorted elements.
+   * @export
    */
   public static int[] sort(int[] arr, int from, int to) {
     if ((to - from) > 1) {
