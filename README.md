@@ -2,6 +2,11 @@
 
 This repository will contain implementation of classic algorithms and mock interview questions.
 
+## Based on the following materials:
+* https://class.coursera.org/algo2-004
+* https://class.coursera.org/algo-008
+* http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02
+
 Topics are borrowed from the book "Cracking the Coding Interview".
 
 ## Data structures
@@ -18,7 +23,9 @@ Topics are borrowed from the book "Cracking the Coding Interview".
 * Depth first search
 * Binary search
 * [DONE] Merge sort
-* Quick sort
+* [DONE] Quick sort
+* [DONE] Random Select
+* [DONE] Determenistic Select
 * Tree insert / find etc.
 
 ## Concepts
