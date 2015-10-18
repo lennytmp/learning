@@ -6,8 +6,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * https://class.coursera.org/algo2-004
 * https://class.coursera.org/algo-008
 * http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02
-
-Topics are borrowed from the book "Cracking the Coding Interview".
+* "Cracking the Coding Interview" by Gayle Laakmann McDowell
 
 ## Data structures
 * Linked lists
