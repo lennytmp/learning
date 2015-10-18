@@ -3,6 +3,7 @@
  */
 
 
+package sorting;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public class QuickSort {
    * @export
    */
   public static void main(String[] args) {
-    int[] arr = {95, 21, 12, 83, 1, 5};
+    int[] arr = {82, 11, 4, 8, 56};
     System.out.println("Input: " + Arrays.toString(arr));
     int[] result = sort(arr, 0, arr.length - 1);
     System.out.println("Result: " + Arrays.toString(result));
@@ -42,7 +43,7 @@ public class QuickSort {
    * @return Array of sorted elements.
    */
   public static int[] sort(int[] arr, int from, int to) {
-    if (to == from + 1 || to <= from) {
+    if (to <= from) {
       return arr;
     }
     Random generator = new Random();
