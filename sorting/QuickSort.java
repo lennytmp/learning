@@ -12,7 +12,7 @@ public class QuickSort {
 
 
   // Generator of random numbers.
-  Random generator = new Random();
+  static Random generator = new Random();
 
   // Stores the number of inversions.
   static long inversions = 0;
@@ -46,7 +46,6 @@ public class QuickSort {
     if (to <= from) {
       return arr;
     }
-    Random generator = new Random();
     arr = swap(arr, from, from + generator.nextInt(to - from));
     int i = from + 1, j = from + 1;
     while (i <= to) {
