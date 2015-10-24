@@ -43,6 +43,7 @@
       <batchtest fork="yes">
         <fileset dir="${src.dir}" includes="**/*Test.java"/>
       </batchtest>
+      <formatter type="plain" usefile="false" />
     </junit>
   </target>
 </project>

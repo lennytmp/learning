@@ -43,6 +43,7 @@ public class Graph {
       System.out.println("===");
     }
     System.out.println("Mincut: " + Integer.toString(adjList.length));
+    System.out.println(groups.toString());
   }
 
 
@@ -77,6 +78,7 @@ public class Graph {
     else {
       List<Integer> group = groups.get(intersected.get(0));
       group.addAll(groups.get(intersected.get(1)));
+      groups.remove(intersected.get(1).intValue());
     }
     return groups;
   }
