@@ -30,15 +30,18 @@ public class Graph {
       {6, 7},
     };
     printGraph(adjList);
-    System.out.println("Nodes: " + Integer.toString(nodesNum(adjList)));
-    int size =  nodesNum(adjList);
     List<List<Integer>> groups = new ArrayList<List<Integer>>();
-    while (size > 2) {
+    Integer[] nodes = getNodes(adjList);
+    for (int i = 0; i < nodes.length; i++) {
+      List<Integer> group = new ArrayList<Integer>();
+      group.add(nodes[i]);
+      groups.add(group);
+    }
+    while (groups.size() > 2) {
       ContractionResult iteration = contractRandomEdge(adjList);
       adjList = iteration.adjList;
       groups = addMergedEdge(groups, iteration.merged);
       int[] merged = iteration.merged;
-      size = nodesNum(adjList);
       printGraph(adjList);
       System.out.println("===");
     }
@@ -50,7 +53,6 @@ public class Graph {
   /**
    * Manges groups of merged edges. There are three cases:
    * If nodes are set in one group, then add new node to this group.
-   * If nodes are not in any group, then create new group with these nodes.
    * If nodes are part of two groups, merge the group
    */
    static List<List<Integer>> addMergedEdge(List<List<Integer>> groups, int[] merged) {
@@ -63,11 +65,7 @@ public class Graph {
         }
       }
     }
-    if (intersected.size() == 0) {
-      Integer[] tmp = {merged[0], merged[1]};
-      groups.add(new ArrayList<Integer>(Arrays.asList(tmp)));
-    }
-    else if (intersected.size() == 1) {
+    if (intersected.size() == 1) {
       List<Integer> edges = groups.get(intersected.get(0));
       for (int i = 0; i < 2; i++) {
         if (edges.indexOf(merged[i]) < 0) {
@@ -108,7 +106,10 @@ public class Graph {
       }
       result.add(tmpEdge);
     }
-    System.out.println("Nodes: " + Integer.toString(nodesNum(result.toArray(resultType))));
+    System.out.println("Nodes: " + Integer.toString(
+        getNodes(result.toArray(resultType)).length
+      )
+    );
     return new ContractionResult(result.toArray(resultType), delEdge);
   }
   
@@ -119,14 +120,14 @@ public class Graph {
   }
 
 
-  static int nodesNum(int[][] adjList) {
+  static Integer[] getNodes(int[][] adjList) {
     HashSet<Integer> nodes = new HashSet<Integer>();
     for (int[] edge : adjList) {
       for (int node : edge) {
         nodes.add(node);
       }
     }
-    return nodes.size();
+    return nodes.toArray(new Integer[0]);
   }
 
 

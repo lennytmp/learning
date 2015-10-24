@@ -17,25 +17,22 @@ public class GraphTest extends junit.framework.TestCase {
     group.addAll(Arrays.asList(tmp));
     groups.add(group);
 
+    Integer[] tmp2 = {5};
+    List<Integer> group2 = new ArrayList<Integer>();
+    group2.addAll(Arrays.asList(tmp2));
+    groups.add(group2);
+
     int[] merged = {1, 3};
     groups = Graph.addMergedEdge(groups, merged);
     String label = "Adding to the existing group";
-    assertEquals(label, 1, groups.size());
-    assertEquals(label, 3, groups.get(0).size());
-
-    label = "Adding a new group";
-    merged[0] = 6;
-    merged[1] = 8;
-    groups = Graph.addMergedEdge(groups, merged);
     assertEquals(label, 2, groups.size());
     assertEquals(label, 3, groups.get(0).size());
-    assertEquals(label, 2, groups.get(1).size());
 
     label = "Mergin two groups";
-    merged[1] = 1;
+    merged[1] = 5;
     groups = Graph.addMergedEdge(groups, merged);
     assertEquals(label, 1, groups.size());
-    assertEquals(label, 5, groups.get(0).size());
+    assertEquals(label, 4, groups.get(0).size());
   }
   
   public void testNodesNum() {
@@ -45,6 +42,6 @@ public class GraphTest extends junit.framework.TestCase {
       {5, 6}, 
       {6, 7},
     };
-    assertEquals(5, Graph.nodesNum(adjList));
+    assertEquals(5, Graph.getNodes(adjList).length);
   }
 }
