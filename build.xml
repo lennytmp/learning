@@ -1,0 +1,48 @@
+<project name="Learning" basedir="." default="main">
+  <property name="src.dir"   value="./" />
+  <property name="mainClass"  value="graph.Graph"/>
+  <property name="build.dir"   value="build"/>
+  <property name="lib.dir"   value="lib"/>
+  <property name="classes.dir" value="${build.dir}/classes"/>
+  <property name="jar.dir"   value="${build.dir}/jar"/>
+  <path id="classpath">
+    <fileset dir="${lib.dir}" includes="**/**/*.jar"/>
+  </path>
+  <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+  <target name="compile" depends="clean">
+    <mkdir dir="${classes.dir}"/>
+    <javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}"
+       classpathref="classpath"/>
+  </target>
+  <target name="jar" depends="compile">
+    <mkdir dir="${jar.dir}"/>
+    <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="${mainClass}"/>
+      </manifest>
+    </jar>
+  </target>
+  <target name="run" depends="jar">
+    <java fork="true" classname="${mainClass}">
+      <classpath>
+        <path refid="classpath"/>
+        <path refid="application"/>
+        <path location="${jar.dir}/${ant.project.name}.jar"/>
+      </classpath>
+    </java>
+  </target>
+  <target name="junit" depends="jar">
+    <junit printsummary="yes">
+      <classpath>
+        <path refid="classpath"/>
+        <path refid="application"/>
+      </classpath>
+      <batchtest fork="yes">
+        <fileset dir="${src.dir}" includes="**/*Test.java"/>
+      </batchtest>
+    </junit>
+  </target>
+</project>

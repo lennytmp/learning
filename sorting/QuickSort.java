@@ -19,7 +19,7 @@ public class QuickSort {
 
 
 
-  /*
+  /**
    * Sets an array, sorts it and prints input, result and number
    * of inversions. 
    * @param args Array of arguments for launching the program.
@@ -34,7 +34,7 @@ public class QuickSort {
   }
 
 
-  /*
+  /**
    * Recursively sorts an array of items.
    * Algorithm description: https://en.wikipedia.org/wiki/Quicksort
    * @param arr Array to sort.
@@ -62,7 +62,7 @@ public class QuickSort {
   }
 
 
-  /*
+  /**
    * Swaps to elements in an array. Increases the number of inversions.
    * @param arr Array to make a swap in.
    * @param pos1 Position of the first element.
