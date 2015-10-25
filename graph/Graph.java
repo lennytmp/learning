@@ -31,6 +31,29 @@ final class ContractionResult {
   }
 }
 
+
+/**
+ * Result of minCut algorithm (as it's random, it can be correct or not).
+ * minCut -  Detected number of minimum cuts.
+ * cuts - Resulting cuts.
+ */
+final class MinCutResult {
+  final int minCut;
+  final List<List<Integer>> cuts;
+
+
+  /**
+   * Constructor, assigning parameters to class properties.
+   * @param minCut Detected number of minimum cuts.
+   * @param cuts Resulting cuts.
+   */
+  MinCutResult(int minCut,  List<List<Integer>> cuts) {
+    this.minCut = minCut;
+    this.cuts = cuts;
+  }
+}
+
+
 /**
  * Class to find mincut of a graph.
  */
@@ -41,9 +64,8 @@ public class Graph {
 
 
   /**
-   * Sets an adjustment list, generates an initial list of cuts,
-   * performs random contraction until the list of cuts is of size 2
-   * and prints the results.
+   * Sets an adjustment list, runs random MinCut algorithm, selects 
+   * the best resykt and prints it.
    * @param args Array of arguments for launching the program. Ignored.
    * @export
    */
@@ -55,6 +77,30 @@ public class Graph {
       {6, 7},
     };
     printGraph(adjList);
+    int n = getNodes(adjList).length;
+    MinCutResult result = null; 
+    for (int i = 0; i < Math.round(n*n*Math.log(n)); i++) {
+      MinCutResult attempt = getRandomMinCut(adjList);
+      if (result == null || result.minCut > attempt.minCut) {
+        result = attempt;
+      }
+      // minCut in a connected graph can't be smaller than 1
+      if (result.minCut == 1) {
+        break;
+      }
+    }
+    System.out.println("Mincut: " + Integer.toString(result.minCut));
+    System.out.println(result.cuts.toString());
+  }
+
+
+  /**
+   * Performs a random min cut algorithm:  performs random contraction
+   * until the list of cuts is of size 2 and returns it's result.
+   * @param adjList The adjustment list of the graph.
+   * @return MinCutResult object with the mincut and cuts.
+   */
+  static MinCutResult getRandomMinCut(int[][] adjList) {
     List<List<Integer>> groups = new ArrayList<List<Integer>>();
     Integer[] nodes = getNodes(adjList);
     for (int i = 0; i < nodes.length; i++) {
@@ -67,11 +113,8 @@ public class Graph {
       adjList = iteration.adjList;
       groups = addMergedEdge(groups, iteration.merged);
       int[] merged = iteration.merged;
-      printGraph(adjList);
-      System.out.println("===");
     }
-    System.out.println("Mincut: " + Integer.toString(adjList.length));
-    System.out.println(groups.toString());
+    return new MinCutResult(adjList.length, groups);
   }
 
 
@@ -122,9 +165,6 @@ public class Graph {
     int[] delEdge = {adjList[edgeIndex][0], adjList[edgeIndex][1]};
     int[][] resultType = {}; 
     int num = 0;
-    System.out.println("Contracting " +
-                       Integer.toString(delEdge[0]) + " " +
-                       Integer.toString(delEdge[1]));
     List<int[]> result = new ArrayList<int[]>();
     for (int i = 0; i < adjList.length; i++) {
       if (isParallelEdge(adjList[i], delEdge)) {
@@ -140,10 +180,6 @@ public class Graph {
       }
       result.add(tmpEdge);
     }
-    System.out.println("Nodes: " + Integer.toString(
-        getNodes(result.toArray(resultType)).length
-      )
-    );
     return new ContractionResult(result.toArray(resultType), delEdge);
   }
   
