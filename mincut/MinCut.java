@@ -2,7 +2,7 @@
  * Performs mincut search by random edge contraction.
  */
 
-package graph;
+package mincut;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -57,7 +57,7 @@ final class MinCutResult {
 /**
  * Class to find mincut of a graph.
  */
-public class Graph {
+public class MinCut {
 
   // Generator of random numbers.
   static Random generator = new Random();

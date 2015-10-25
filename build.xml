@@ -1,6 +1,6 @@
 <project name="Learning" basedir="." default="main">
   <property name="src.dir"   value="./" />
-  <property name="mainClass"  value="graph.Graph"/>
+  <property name="mainClass"  value="HelloWorld"/>
   <property name="build.dir"   value="build"/>
   <property name="lib.dir"   value="lib"/>
   <property name="classes.dir" value="${build.dir}/classes"/>
