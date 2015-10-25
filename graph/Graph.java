@@ -1,27 +1,52 @@
+/**
+ * Performs mincut search by random edge contraction.
+ */
+
 package graph;
-
-import java.util.Random;
-import java.util.HashSet;
 import java.util.Arrays;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 
 
+/**
+ * Result of single random contraction.
+ * adjList - resulting adjustment list.
+ * merged - the merged edge.
+ */
 final class ContractionResult {
-  public final int[][] adjList;
-  public final int[] merged;
+  final int[][] adjList;
+  final int[] merged;
 
-  public ContractionResult(int[][] adjList, int[] merged) {
+  
+  /**
+   * Constructor, assigning parameters to class properties.
+   * @param adjList Adjustment list after contraction.
+   * @param merged Edge that was merged.
+   */
+  ContractionResult(int[][] adjList, int[] merged) {
     this.adjList = adjList;
     this.merged = merged;
   }
 }
 
+/**
+ * Class to find mincut of a graph.
+ */
 public class Graph {
 
   // Generator of random numbers.
   static Random generator = new Random();
 
+
+  /**
+   * Sets an adjustment list, generates an initial list of cuts,
+   * performs random contraction until the list of cuts is of size 2
+   * and prints the results.
+   * @param args Array of arguments for launching the program. Ignored.
+   * @export
+   */
   public static void main(String[] args) {
     int[][] adjList = {
       {1, 2}, {1, 5},
@@ -51,9 +76,12 @@ public class Graph {
 
 
   /**
-   * Manges groups of merged edges. There are three cases:
-   * If nodes are set in one group, then add new node to this group.
-   * If nodes are part of two groups, merge the group
+   * Manges groups of merged edges. Following cases are possible:
+   * - If nodes are set in one group, then add new node to this group.
+   * - If nodes are part of two groups, merge the group.
+   * @param groups Current list of cuts.
+   * @param merged The edge that was merged.
+   * @return New list of cuts.
    */
    static List<List<Integer>> addMergedEdge(List<List<Integer>> groups, int[] merged) {
     List<Integer> intersected = new ArrayList<Integer>();
@@ -82,6 +110,13 @@ public class Graph {
   }
 
 
+  /**
+   * Performs a ranndom contraction and returns the result adjList with
+   * the merged edge.
+   * @param adjList The adjustment list of the edge.
+   * @return ContructionResult object with the resulting adjustment list
+   * and merged edge.
+   */
   public static ContractionResult contractRandomEdge(int[][] adjList) {
     int edgeIndex = generator.nextInt(adjList.length);
     int[] delEdge = {adjList[edgeIndex][0], adjList[edgeIndex][1]};
@@ -91,7 +126,6 @@ public class Graph {
                        Integer.toString(delEdge[0]) + " " +
                        Integer.toString(delEdge[1]));
     List<int[]> result = new ArrayList<int[]>();
-    //Creating new graph
     for (int i = 0; i < adjList.length; i++) {
       if (isParallelEdge(adjList[i], delEdge)) {
         continue;
@@ -114,12 +148,23 @@ public class Graph {
   }
   
 
+  /**
+   * Detects if two edges are parallel.
+   * @param edge1 The first edge.
+   * @param edge2 The second edge.
+   * @return True if the edges are parallel, false otherwise.
+   **/
   static boolean isParallelEdge(int[] edge1, int[] edge2) {
     return ((edge1[0] == edge2[0] && edge1[1] == edge2[1]) ||
             (edge1[0] == edge2[1] && edge1[1] == edge2[0]));
   }
 
 
+  /**
+   * Gets all nodes of the graph.
+   * @param adjList The adjustment list of the graph.
+   * @return An array of all nodes in the graph with no duplicates.
+   */
   static Integer[] getNodes(int[][] adjList) {
     HashSet<Integer> nodes = new HashSet<Integer>();
     for (int[] edge : adjList) {
@@ -131,7 +176,11 @@ public class Graph {
   }
 
 
-  public static void printGraph(int[][] adjList) {
+  /**
+   * Prints the graph nicely.
+   * @param adjList The adjustment list of the graph.
+   */
+  static void printGraph(int[][] adjList) {
     for (int[] edge : adjList) {
       System.out.println(Integer.toString(edge[0]) + " -> " +
         Integer.toString(edge[1]));
