@@ -9,6 +9,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * "Cracking the Coding Interview" by Gayle Laakmann McDowell
 
 ## Data structures
+* [DONE] Graphs
 * Linked lists
 * Binary Trees
 * Tries
@@ -25,6 +26,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [DONE] Quick sort
 * [DONE] Random Select
 * [DONE] Determenistic Select
+* [DONE] Min cut search in graphs
 * Tree insert / find etc.
 
 ## Concepts
