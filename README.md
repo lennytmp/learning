@@ -21,6 +21,8 @@ This repository will contain implementation of classic algorithms and mock inter
 * Vectors / ArrayLists
 * Hash Tables
 * Map (Binary tree)
+* Circular buffer
+* Doubly Linked List
 
 ## Algorithms
 * Breadth first search
