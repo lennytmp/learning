@@ -1,4 +1,8 @@
 *.class
 *.swp
 *.jar
+*.DS_Store
+*.swm
+*.swn
+*.swo
 build/
