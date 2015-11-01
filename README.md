@@ -25,7 +25,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * Doubly Linked List
 
 ## Algorithms
-* Breadth first search
+* [DONE] Breadth first search
 * Depth first search
 * Binary search
 * [DONE] Merge sort
