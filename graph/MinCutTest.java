@@ -1,9 +1,9 @@
-package mincut;
+package graph;
 
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
-import mincut.MinCut;
+import graph.MinCut;
 
 
 public class MinCutTest extends junit.framework.TestCase {

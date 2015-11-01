@@ -2,7 +2,7 @@
  * Performs mincut search by random edge contraction.
  */
 
-package mincut;
+package graph;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashSet;
