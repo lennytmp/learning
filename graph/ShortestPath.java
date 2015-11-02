@@ -13,7 +13,7 @@ class Graph {
 	int[][] adjList;
 
   //Connections to other nodes keyed by node.
-  HashMap<Integer, ArrayList<Integer>> NodesByNode = new HashMap<Integer, ArrayList<Integer>>();
+  HashMap<Integer, ArrayList<Integer>> nodesByNode = new HashMap<Integer, ArrayList<Integer>>();
 
   /**
    * Constructor, assigning parameters to class properties and keeping 
@@ -23,13 +23,13 @@ class Graph {
   Graph(int[][] adjList) {
     this.adjList = adjList;
     for (int[] edge : adjList) {
-      ArrayList<Integer> nodes = NodesByNode.get(edge[0]);
+      ArrayList<Integer> nodes = nodesByNode.get(edge[0]);
       if (nodes == null) {
         nodes = new ArrayList<Integer>();
       }
       if (nodes.indexOf(edge[0]) < 0) {
         nodes.add(edge[1]);
-        NodesByNode.put(edge[0], nodes);
+        nodesByNode.put(edge[0], nodes);
       }
     }
   }
@@ -143,7 +143,7 @@ public class ShortestPath {
     QueueElement fromObj = queue.remove(0);
     int from = fromObj.value;
     explored.add(from);
-    ArrayList<Integer> nodes = graph.NodesByNode.get(from);
+    ArrayList<Integer> nodes = graph.nodesByNode.get(from);
     if (nodes == null) {
       return findPathFromQueue(graph, to, explored, queue);
     }
