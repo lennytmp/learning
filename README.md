@@ -26,8 +26,9 @@ This repository will contain implementation of classic algorithms and mock inter
 
 ## Algorithms
 * [DONE] Breadth first search
-* Depth first search
+* [DONE] Depth first search
 * Binary search
+* Dijkstra Shortest Path
 * [DONE] Merge sort
 * [DONE] Quick sort
 * [DONE] Random Select
