@@ -8,34 +8,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
-// Graph class
-class Graph {
-	int[][] adjList;
-
-  //Connections to other nodes keyed by node.
-  HashMap<Integer, ArrayList<Integer>> nodesByNode = new HashMap<Integer, ArrayList<Integer>>();
-
-  /**
-   * Constructor, assigning parameters to class properties and keeping
-   * a HashMap of all nodes.
-   * @param adjList Adjustment list after contraction.
-   */
-  Graph(int[][] adjList) {
-    this.adjList = adjList;
-    for (int[] edge : adjList) {
-      ArrayList<Integer> nodes = nodesByNode.get(edge[0]);
-      if (nodes == null) {
-        nodes = new ArrayList<Integer>();
-      }
-      if (nodes.indexOf(edge[0]) < 0) {
-        nodes.add(edge[1]);
-        nodesByNode.put(edge[0], nodes);
-      }
-    }
-  }
-}
-
-
 //Class for storing elements of the queue.
 class QueueElement {
 
