@@ -55,7 +55,7 @@ public class FindCycle {
     }
     int curNode = queue.remove(queue.size() - 1);
     explored.add(curNode);
-    ArrayList<Integer> nodes = graph.nodesByNode.get(curNode);
+    ArrayList<Integer> nodes = graph.getNeighborIndexes(curNode);
     if (nodes != null) {
       for (int node : nodes) {
         if (node == from) {

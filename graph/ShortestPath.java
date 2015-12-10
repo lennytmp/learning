@@ -114,7 +114,7 @@ public class ShortestPath {
     QueueElement fromObj = queue.remove(0);
     int from = fromObj.value;
     explored.add(from);
-    ArrayList<Integer> nodes = graph.nodesByNode.get(from);
+    ArrayList<Integer> nodes = graph.getNeighborIndexes(from);
     if (nodes == null) {
       return findPathFromQueue(graph, to, explored, queue);
     }
@@ -146,19 +146,5 @@ public class ShortestPath {
       result += ' ' + elem.toString();
     }
     System.out.println(result);
-  }
-
-
-  /**
-   * Prints the hashmap object (integer as keys, array lists of integers
-   * as values.
-   * @param map The hashmap to print.
-   */
-  static void printHashMap(HashMap<Integer, ArrayList<Integer>> map) {
-    for (Integer name : map.keySet()) {
-      String key = name.toString();
-      String value = map.get(name).toString();
-      System.out.println(key + " " + value);
-    }
   }
 }

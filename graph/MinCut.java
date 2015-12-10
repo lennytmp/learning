@@ -1,5 +1,6 @@
 /**
  * Performs mincut search by random edge contraction.
+ * TODO (lenny): use common Graph class.
  */
 
 package graph;
