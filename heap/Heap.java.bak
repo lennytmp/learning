@@ -9,7 +9,7 @@ public class Heap {
   Node root;
 
   /**
-   * Adds an element to the heap.
+   * Adds an element to the heap.  
    * @param element Node to add to the heap.
    */
   public void add(Node element) {
@@ -17,15 +17,15 @@ public class Heap {
       root = element;
       root.level = 0;
     } else {
-      Node el = getFirstFreeParent();
+      Node el = getFirstFreeParent(); 
       el.addChild(element);
       heapify(element);
     }
   }
 
-
+  
   /**
-   * Gets the node in a tree by it's index.
+   * Gets the node in a tree by it's index. 
    * @param index Index of the node to search.
    * @return The node with the index or null.
    */
@@ -68,7 +68,7 @@ public class Heap {
       elem.parent.removeChild(elem);
       return;
     }
-    Node lastParent = last.parent;
+    Node lastParent = last.parent; 
     if (elem.parent != null) {
       Node p = elem.parent;
       p.removeChild(elem);
@@ -85,7 +85,7 @@ public class Heap {
     last.children = children;
     last.level = elem.level;
     lastParent.removeChild(last);
-
+   
     ArrayList<Node> queue = new ArrayList();
     queue.add(last);
     while (queue.size() > 0) {
@@ -102,13 +102,13 @@ public class Heap {
           queue.add(maxChild);
         }
       }
-    }
+    } 
   }
 
 
   /**
    * Enforces the heap property starting from the element.
-   * @param elem The node element to start with.
+   * @param elem The node element to start with. 
    */
   public void heapify(Node elem) {
     if (elem.parent != null && elem.parent.value < elem.value) {
@@ -147,8 +147,8 @@ public class Heap {
 
 
   /**
-   * Get the last element of the heap, last row, last column.
-   * @return Node in the end or null.
+   * Get the last element of the heap, last row, last column. 
+   * @return Node in the end or null. 
    */
   protected Node getLastElement() {
     ArrayList<Node> queue = new ArrayList();
@@ -164,8 +164,8 @@ public class Heap {
 
 
   /**
-   * Get the first element, which has less than 2 children.
-   * @return Node in the end or null.
+   * Get the first element, which has less than 2 children. 
+   * @return Node in the end or null. 
    */
   protected Node getFirstFreeParent() {
     ArrayList<Node> queue = new ArrayList();
@@ -183,7 +183,7 @@ public class Heap {
 
 
   /**
-   * Sets the tree, removes an item and prints the results.
+   * Sets the tree, removes an item and prints the results. 
    * @param args Array of arguments for launching the program. Ignored.
    */
   public static void main(String[] args) {
