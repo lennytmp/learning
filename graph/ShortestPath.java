@@ -103,7 +103,6 @@ public class ShortestPath {
    * Sets an adjustment list, runs the alorithm to get the shortest path
    * and prints the result.
    * @param args Array of arguments for launching the program. Ignored.
-   * @export
    */
   public static void main(String[] args) {
     int[][] adjList = {{1, 2}, {1, 5}, {5, 6}, {2, 6}, {2, 3}, {3, 6}, {6, 7}};

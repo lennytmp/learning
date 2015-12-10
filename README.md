@@ -11,7 +11,7 @@ This repository will contain implementation of classic algorithms and mock inter
 ## Data structures
 * [DONE] Graphs
 * [DONE] Linked lists (reverse linked list)
-* Heap
+* [DONE] Heap
 * Set
 * Binary Trees
 * Tries
