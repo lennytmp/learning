@@ -10,7 +10,7 @@ class LinkedList {
 
 public class Reverse2 {
   public static void main(String[] args) {
-    LinkedList a = new LinkedList(1, new LinkedList(2, null)); 
+    LinkedList a = new LinkedList(1, new LinkedList(2, null));
     a = reverse(a, null);
     while (a != null) {
       System.out.print(Integer.toString(a.value) + " -> ");

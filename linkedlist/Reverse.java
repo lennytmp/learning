@@ -1,5 +1,5 @@
 /**
- * Linked List class and class to reverse the linked list. 
+ * Linked List class and class to reverse the linked list.
  */
 
 package linkedlist;
@@ -19,7 +19,7 @@ public class Reverse {
 
   /**
    * Sets a linked list, prints it, calls reverse function and returns
-   * the result. 
+   * the result.
    * @param args Array of arguments for launching the program.
    * @export
    */
@@ -34,7 +34,7 @@ public class Reverse {
   }
 
   /**
-   * Recursively reverses the linked list. 
+   * Recursively reverses the linked list.
    * @param list The list to reverse.
    * @param left Part of the list to be added in the end of the reversed
    * part. In the first run should be null.
@@ -54,7 +54,7 @@ public class Reverse {
     return reverseLinkedList(p2, list);
   }
 
-  
+
   /**
    * Prints the linked list
    * @param list The list to print.

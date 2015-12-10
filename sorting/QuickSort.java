@@ -21,7 +21,7 @@ public class QuickSort {
 
   /**
    * Sets an array, sorts it and prints input, result and number
-   * of inversions. 
+   * of inversions.
    * @param args Array of arguments for launching the program.
    * @export
    */
@@ -67,7 +67,7 @@ public class QuickSort {
    * @param arr Array to make a swap in.
    * @param pos1 Position of the first element.
    * @param pos2 Position of the second element.
-   * @return Array with swapped elements. 
+   * @return Array with swapped elements.
    */
   private static int[] swap(int[] arr, int pos1, int pos2) {
     if (pos1 == pos2) {

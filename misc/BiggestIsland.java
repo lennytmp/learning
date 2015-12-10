@@ -13,9 +13,9 @@ class Point {
 
   /**
    * Constructor, assigning parameters to class properties.
-   * @param x X coordinate of the point. 
-   * @param y Y coordinate of the point. 
-   */  
+   * @param x X coordinate of the point.
+   * @param y Y coordinate of the point.
+   */
 	Point(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -45,8 +45,8 @@ public class BiggestIsland {
 
   /**
    * Counts the number points in the biggest island.
-   * @param ocean The initial matrix to search in. 
-   * @return The number of points in the biggest island. 
+   * @param ocean The initial matrix to search in.
+   * @return The number of points in the biggest island.
    */
   static int countBiggestIsland(int[][] ocean) {
     //Getting each point in a seperate island.
@@ -79,7 +79,7 @@ public class BiggestIsland {
         }
         if (currentIsland >= 0) {
           break;
-        } 
+        }
       }
       for (int num : mergedIslands) {
         for (int j = 0, pointsNum = islands.get(num).size(); j < pointsNum; j++) {
@@ -93,7 +93,7 @@ public class BiggestIsland {
           newIslands.add(islands.get(i));
         }
       }
-      islands = newIslands; 
+      islands = newIslands;
     }
     //Get the maximum island size by iterating through the islands.
     int max = 1;
@@ -108,8 +108,8 @@ public class BiggestIsland {
 
   /**
    * Given the island, and the point searches for any adjusent other island.
-   * @param p The point in the island to search from. 
-   * @param exIsland The index of the island, p came from. 
+   * @param p The point in the island to search from.
+   * @param exIsland The index of the island, p came from.
    * @param islands The array of all islands currently available.
    * @return Array of indexes of the adjusent islands.
    */

@@ -16,7 +16,7 @@ class Graph {
   HashMap<Integer, ArrayList<Integer>> nodesByNode = new HashMap<Integer, ArrayList<Integer>>();
 
   /**
-   * Constructor, assigning parameters to class properties and keeping 
+   * Constructor, assigning parameters to class properties and keeping
    * a HashMap of all nodes.
    * @param adjList Adjustment list after contraction.
    */
@@ -41,13 +41,13 @@ class QueueElement {
 
   //The value of the node.
 	int value;
-  
+
   //The path from the start to this node.
 	ArrayList<Integer> comingFrom;
 
   /**
    * Constructor, assigning parameters to class properties.
-   * @param value Value of the node. 
+   * @param value Value of the node.
    * @param comingFrom The path from the start to this node.
    */
 	QueueElement(int value, ArrayList<Integer> comingFrom) {
@@ -101,7 +101,7 @@ public class ShortestPath {
 
   /**
    * Sets an adjustment list, runs the alorithm to get the shortest path
-   * and prints the result. 
+   * and prints the result.
    * @param args Array of arguments for launching the program. Ignored.
    * @export
    */
@@ -164,7 +164,7 @@ public class ShortestPath {
     return findPathFromQueue(graph, to, explored, queue);
   }
 
-  
+
   /**
    * Prints an array list of integers.
    * @param list The list to search in.
@@ -177,7 +177,7 @@ public class ShortestPath {
     System.out.println(result);
   }
 
-  
+
   /**
    * Prints the hashmap object (integer as keys, array lists of integers
    * as values.
@@ -188,6 +188,6 @@ public class ShortestPath {
       String key = name.toString();
       String value = map.get(name).toString();
       System.out.println(key + " " + value);
-    } 
+    }
   }
 }

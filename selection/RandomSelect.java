@@ -20,7 +20,7 @@ public class RandomSelect {
 
   /*
    * Sets an array, sorts it and prints input, result and number
-   * of inversions. 
+   * of inversions.
    * @param args Array of arguments for launching the program.
    * @export
    */
@@ -41,7 +41,7 @@ public class RandomSelect {
    * @param arr Array to select from.
    * @param from From which element selection is needed.
    * @param to Till which element seledction is needed.
-   * @param order Order statistics. 
+   * @param order Order statistics.
    * @return Integer the element corresponding to order statistics.
    */
   public static int select(int[] arr, int from, int to, int order) {
@@ -74,7 +74,7 @@ public class RandomSelect {
    * @param arr Array to make a swap in.
    * @param pos1 Position of the first element.
    * @param pos2 Position of the second element.
-   * @return Array with swapped elements. 
+   * @return Array with swapped elements.
    */
   private static int[] swap(int[] arr, int pos1, int pos2) {
     if (pos1 == pos2) {

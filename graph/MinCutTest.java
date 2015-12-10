@@ -7,8 +7,8 @@ import graph.MinCut;
 
 
 public class MinCutTest extends junit.framework.TestCase {
- 
- 
+
+
   public void testAddMergedEdge() {
     List<List<Integer>> groups = new ArrayList<List<Integer>>();
 
@@ -34,12 +34,12 @@ public class MinCutTest extends junit.framework.TestCase {
     assertEquals(label, 1, groups.size());
     assertEquals(label, 4, groups.get(0).size());
   }
-  
+
   public void testNodesNum() {
     int[][] adjList = {
       {1, 2}, {1, 5},
       {2, 5}, {2, 6},
-      {5, 6}, 
+      {5, 6},
       {6, 7},
     };
     assertEquals(5, MinCut.getNodes(adjList).length);

@@ -8,13 +8,13 @@ import java.util.Arrays;
 
 
 public class MergeSort {
-  
+
   // Stores the number of inversions.
   static long inversions = 0;
 
   /*
    * Sets an array, sorts it and prints input, result and number
-   * of inversions. 
+   * of inversions.
    * @param args Array of arguments for launching the program.
    * @export
    */

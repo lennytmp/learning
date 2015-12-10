@@ -13,7 +13,7 @@ public class DeterministicSelect {
 
   //Stores the number of inversions.
   static long inversions = 0;
-  
+
   //Length of small arrays to determine the median of medians.
   static int smLength = 5;
 
@@ -21,7 +21,7 @@ public class DeterministicSelect {
 
   /*
    * Sets an array, sorts it and prints input, result and number
-   * of inversions. 
+   * of inversions.
    * @param args Array of arguments for launching the program.
    * @export
    */
@@ -42,7 +42,7 @@ public class DeterministicSelect {
    * @param arr Array to select from.
    * @param from From which element selection is needed.
    * @param to Till which element seledction is needed.
-   * @param order Order statistics. 
+   * @param order Order statistics.
    * @return Integer the element corresponding to order statistics.
    */
   public static int select(int[] arr, int from, int to, int order) {
@@ -76,7 +76,7 @@ public class DeterministicSelect {
    * @param arr Array to search in.
    * @param from From which element search is needed.
    * @param to Till which element search is needed.
-   * @param value Value to search for. 
+   * @param value Value to search for.
    * @return Index of the first element that is equal to value or -1 if not found.
    */
   private static int getIndexByValue(int[] arr, int from, int to, int value) {
@@ -91,7 +91,7 @@ public class DeterministicSelect {
 
   /*
    * Find a pivot by finding a median of medians from n/5 arrays, by sorting
-   * them first. 
+   * them first.
    * @param arr Array to select from.
    * @param from From which element selection is needed.
    * @param to Till which element seledction is needed.
@@ -100,7 +100,7 @@ public class DeterministicSelect {
   private static int getPivot(int[] arr, int from, int to) {
     int[] medians = new int[divideRoundUp(to - from, smLength)];
     for (int i = from; (double)(i - from)/smLength < medians.length; i += smLength) {
-  
+
       int smTo = Math.min(i + smLength - 1, to);
       arr = sorting.QuickSort.sort(arr, i, smTo);
 
@@ -108,14 +108,14 @@ public class DeterministicSelect {
       medians[divideRoundUp(i - from, smLength)] = arr[medianPos];
 
     }
-    return select(medians, 0, medians.length - 1, divideRoundUp(medians.length, 2)); 
+    return select(medians, 0, medians.length - 1, divideRoundUp(medians.length, 2));
   }
-  
+
   /*
-   * Divides two ints, rounds up the result and returns it as int. 
+   * Divides two ints, rounds up the result and returns it as int.
    * @param a Numerator.
    * @param b Denumerator.
-   * @return Int rounded up value of a/b. 
+   * @return Int rounded up value of a/b.
    */
   private static int divideRoundUp(int a, int b) {
     return (int)Math.ceil((double)a / b);
@@ -127,7 +127,7 @@ public class DeterministicSelect {
    * @param arr Array to make a swap in.
    * @param pos1 Position of the first element.
    * @param pos2 Position of the second element.
-   * @return Array with swapped elements. 
+   * @return Array with swapped elements.
    */
   private static int[] swap(int[] arr, int pos1, int pos2) {
     if (pos1 == pos2) {

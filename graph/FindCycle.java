@@ -11,10 +11,10 @@ import java.util.HashMap;
 // Class to find cycles
 public class FindCycle {
 
-  
+
   /**
    * Sets an adjustment list, runs the alorithm to get check for the cycle
-   * and prints the result. 
+   * and prints the result.
    * @param args Array of arguments for launching the program. Ignored.
    * @export
    */
@@ -28,7 +28,7 @@ public class FindCycle {
 
   /**
    * Sets initial varialbes and makes the call for recursive function
-   * to detect if there is a cycle. 
+   * to detect if there is a cycle.
    * @param graph The graph to search in.
    * @param from The pint where to detect a cycle in.
    * @export

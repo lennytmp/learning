@@ -19,7 +19,7 @@ final class ContractionResult {
   final int[][] adjList;
   final int[] merged;
 
-  
+
   /**
    * Constructor, assigning parameters to class properties.
    * @param adjList Adjustment list after contraction.
@@ -64,7 +64,7 @@ public class MinCut {
 
 
   /**
-   * Sets an adjustment list, runs random MinCut algorithm, selects 
+   * Sets an adjustment list, runs random MinCut algorithm, selects
    * the best resykt and prints it.
    * @param args Array of arguments for launching the program. Ignored.
    * @export
@@ -73,12 +73,12 @@ public class MinCut {
     int[][] adjList = {
       {1, 2}, {1, 5},
       {2, 5}, {2, 6},
-      {5, 6}, 
+      {5, 6},
       {6, 7},
     };
     printGraph(adjList);
     int n = getNodes(adjList).length;
-    MinCutResult result = null; 
+    MinCutResult result = null;
     for (int i = 0; i < Math.round(n*n*Math.log(n)); i++) {
       MinCutResult attempt = getRandomMinCut(adjList);
       if (result == null || result.minCut > attempt.minCut) {
@@ -163,7 +163,7 @@ public class MinCut {
   public static ContractionResult contractRandomEdge(int[][] adjList) {
     int edgeIndex = generator.nextInt(adjList.length);
     int[] delEdge = {adjList[edgeIndex][0], adjList[edgeIndex][1]};
-    int[][] resultType = {}; 
+    int[][] resultType = {};
     int num = 0;
     List<int[]> result = new ArrayList<int[]>();
     for (int i = 0; i < adjList.length; i++) {
@@ -182,7 +182,7 @@ public class MinCut {
     }
     return new ContractionResult(result.toArray(resultType), delEdge);
   }
-  
+
 
   /**
    * Detects if two edges are parallel.
