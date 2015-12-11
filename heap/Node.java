@@ -94,11 +94,14 @@ class Node {
    * Get the child with max value.
    * @return Node with max value or null.
    */
-  public Node getMaxChild() {
+  public Node getChild(boolean max) {
     Node result = children[0];
     for (Node ch : children) {
       if (ch != null && ch.value > result.value) {
-        result = ch;
+        if ((max && ch.value > result.value) ||
+              (!max && ch.value < result.value)) {
+          result = ch;
+        }
       }
     }
     return result;

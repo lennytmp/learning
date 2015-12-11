@@ -8,6 +8,17 @@ public class Heap {
   // Root element.
   Node root;
 
+  // If it's maxHeap. False means minHeap.
+  boolean maxHeap;
+
+  /**
+   * Heap constructor.
+   * @param maxHeap If it's maxHeap. False means minHeap.
+   */
+  public Heap(boolean maxHeap) {
+    this.maxHeap = maxHeap;
+  }
+
   /**
    * Adds an element to the heap.
    * @param element Node to add to the heap.
@@ -90,16 +101,16 @@ public class Heap {
     queue.add(last);
     while (queue.size() > 0) {
       Node node = queue.remove(0);
-      Node maxChild = node.getMaxChild();
-      if (maxChild != null) {
-        if (maxChild.value > node.value) {
-          int tmp = maxChild.parent.value;
-          maxChild.parent.value = maxChild.value;
-          maxChild.value = tmp;
-          tmp = maxChild.parent.index;
-          maxChild.parent.index = maxChild.index;
-          maxChild.index = tmp;
-          queue.add(maxChild);
+      Node topChild = node.getChild(maxHeap);
+      if (topChild != null) {
+        if (topChild.value > node.value) {
+          int tmp = topChild.parent.value;
+          topChild.parent.value = topChild.value;
+          topChild.value = tmp;
+          tmp = topChild.parent.index;
+          topChild.parent.index = topChild.index;
+          topChild.index = tmp;
+          queue.add(topChild);
         }
       }
     }
@@ -111,14 +122,17 @@ public class Heap {
    * @param elem The node element to start with.
    */
   public void heapify(Node elem) {
-    if (elem.parent != null && elem.parent.value < elem.value) {
-      int tmp = elem.parent.value;
-      elem.parent.value = elem.value;
-      elem.value = tmp;
-      tmp = elem.parent.index;
-      elem.parent.index = elem.index;
-      elem.index = tmp;
-      heapify(elem.parent);
+    if (elem.parent != null) {
+      if ((maxHeap && elem.parent.value < elem.value) ||
+            (!maxHeap && elem.parent.value > elem.value)) {
+        int tmp = elem.parent.value;
+        elem.parent.value = elem.value;
+        elem.value = tmp;
+        tmp = elem.parent.index;
+        elem.parent.index = elem.index;
+        elem.index = tmp;
+        heapify(elem.parent);
+      }
     }
   }
 
@@ -187,7 +201,7 @@ public class Heap {
    * @param args Array of arguments for launching the program. Ignored.
    */
   public static void main(String[] args) {
-    Heap tree = new Heap();
+    Heap tree = new Heap(false);
     for (int i = 0; i < 10; i++) {
       tree.add(new Node(i, i));
     }
