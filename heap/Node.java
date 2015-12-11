@@ -9,6 +9,12 @@ class Node {
   // Index of the node.
   public int index;
 
+  // Object of the node.
+  public Object obj;
+
+  // Counter to set the index
+  public static int indexCnt = 0;
+
   // The level in the heap, set externally.
   public int level;
 
@@ -24,9 +30,11 @@ class Node {
    * @param value The value of the node.
    * @param index The index of the node.
    */
-  public Node(int value, int index) {
+  public Node(int value, Object obj) {
     this.value = value;
-    this.index = index;
+    this.obj = obj;
+    this.index = Node.indexCnt;
+    Node.indexCnt++;
   }
 
 
@@ -105,6 +113,25 @@ class Node {
       }
     }
     return result;
+  }
+
+
+  /**
+   * Swaps the node with partner (index, obj, value).
+   * @param partner The node to swap with.
+   */
+  public void swap(Node partner) {
+    int tmp = partner.value;
+    partner.value = this.value;
+    this.value = tmp;
+    
+    tmp = partner.index;
+    partner.index = this.index;
+    this.index = tmp;
+
+    Object tmpObj = partner.obj;
+    partner.obj = this.obj;
+    this.obj = tmpObj;
   }
 
 

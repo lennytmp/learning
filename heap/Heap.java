@@ -58,12 +58,11 @@ public class Heap {
 
 
   /**
-   * Gets the max node (root) and removes it from the heap.
+   * Gets the top node (root) and removes it from the heap.
    * @return The node with max value or null.
    */
-  public Node pullMax() {
-    remove(root.index);
-    return root;
+  public Node pullTop() {
+    return remove(root.index);
   }
 
 
@@ -71,20 +70,23 @@ public class Heap {
    * Removes elements by index.
    * @param index Index of the node to remove.
    */
-  public void remove(int index) {
+  public Node remove(int index) {
     Node elem = findByIndex(index);
-    if (elem == null) return;
+    if (elem == null) return null;
     Node last = getLastElement();
     if (elem == last) {
       elem.parent.removeChild(elem);
-      return;
+      return elem;
     }
     Node lastParent = last.parent;
     if (elem.parent != null) {
       Node p = elem.parent;
       p.removeChild(elem);
+      lastParent.removeChild(last);
       p.addChild(last);
     } else {
+      lastParent.removeChild(last);
+      last.level = root.level;
       root = last;
     }
     for (int i = 0; i < elem.children.length; i++) {
@@ -94,8 +96,6 @@ public class Heap {
     }
     Node[] children = elem.children;
     last.children = children;
-    last.level = elem.level;
-    lastParent.removeChild(last);
 
     ArrayList<Node> queue = new ArrayList();
     queue.add(last);
@@ -103,17 +103,14 @@ public class Heap {
       Node node = queue.remove(0);
       Node topChild = node.getChild(maxHeap);
       if (topChild != null) {
-        if (topChild.value > node.value) {
-          int tmp = topChild.parent.value;
-          topChild.parent.value = topChild.value;
-          topChild.value = tmp;
-          tmp = topChild.parent.index;
-          topChild.parent.index = topChild.index;
-          topChild.index = tmp;
+        if ((maxHeap && topChild.value > node.value) ||
+              (!maxHeap && topChild.value < node.value)) {
+          topChild.swap(topChild.parent);
           queue.add(topChild);
         }
       }
     }
+    return elem;
   }
 
 
@@ -125,12 +122,7 @@ public class Heap {
     if (elem.parent != null) {
       if ((maxHeap && elem.parent.value < elem.value) ||
             (!maxHeap && elem.parent.value > elem.value)) {
-        int tmp = elem.parent.value;
-        elem.parent.value = elem.value;
-        elem.value = tmp;
-        tmp = elem.parent.index;
-        elem.parent.index = elem.index;
-        elem.index = tmp;
+        elem.swap(elem.parent);
         heapify(elem.parent);
       }
     }
@@ -201,12 +193,25 @@ public class Heap {
    * @param args Array of arguments for launching the program. Ignored.
    */
   public static void main(String[] args) {
-    Heap tree = new Heap(false);
+    Heap tree = new Heap(true);
+    class NodeObj {
+      public String hello;
+      public NodeObj(int i) {
+        hello = "World " + i;
+      }
+    }
     for (int i = 0; i < 10; i++) {
-      tree.add(new Node(i, i));
+      tree.add(new Node(i, new NodeObj(i)));
     }
     System.out.println(tree);
     tree.remove(3);
+    System.out.println(tree);
+
+    NodeObj n = (NodeObj)tree.pullTop().obj;
+    System.out.println(n.hello);
+    System.out.println(tree);
+    n = (NodeObj)tree.pullTop().obj;
+    System.out.println(n.hello);
     System.out.println(tree);
   }
 }
