@@ -124,7 +124,7 @@ class Node {
     int tmp = partner.value;
     partner.value = this.value;
     this.value = tmp;
-   
+     
     tmp = partner.index;
     partner.index = this.index;
     this.index = tmp;

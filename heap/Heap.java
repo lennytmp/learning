@@ -67,8 +67,9 @@ public class Heap {
 
 
   /**
-   * Removes elements by index.
+   * Removes elements by index and returns it.
    * @param index Index of the node to remove.
+   * @return Removed node.
    */
   public Node remove(int index) {
     Node elem = findByIndex(index);
