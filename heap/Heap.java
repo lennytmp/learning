@@ -23,7 +23,7 @@ public class Heap {
    * Adds an element to the heap.
    * @param element Node to add to the heap.
    */
-  public void add(Node element) {
+  protected void add(Node element) {
     if (root == null) {
       root = element;
       root.level = 0;
@@ -32,6 +32,17 @@ public class Heap {
       el.addChild(element);
       heapify(element);
     }
+  }
+
+
+ /**
+   * Creates a node with the objects and adds it to the heap.
+   * @param value Value of the node. 
+   * @param obj Object for the node.
+   */
+  public void addObj(int value, Object obj) {
+    Node n = new Node(value, obj);
+    this.add(n);
   }
 
 
@@ -202,7 +213,7 @@ public class Heap {
       }
     }
     for (int i = 0; i < 10; i++) {
-      tree.add(new Node(i, new NodeObj(i)));
+      tree.addObj(i, new NodeObj(i));
     }
     System.out.println(tree);
     tree.remove(3);
