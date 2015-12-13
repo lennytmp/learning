@@ -73,6 +73,9 @@ public class Heap {
    * @return The node with max value or null.
    */
   public Node pullTop() {
+    if (root == null) {
+      return null;
+    }
     return remove(root.index);
   }
 
@@ -82,7 +85,11 @@ public class Heap {
    * @return The node with max value or null.
    */
   public Object pullTopObj() {
-    return this.pullTop().obj;
+    Node topNode = this.pullTop();
+    if (topNode == null) {
+      return null;
+    }
+    return topNode.obj;
   }
 
 
@@ -96,7 +103,11 @@ public class Heap {
     if (elem == null) return null;
     Node last = getLastElement();
     if (elem == last) {
-      elem.parent.removeChild(elem);
+      if (elem.parent == null) {
+        root = null;
+      } else {
+        elem.parent.removeChild(elem);
+      }
       return elem;
     }
     Node lastParent = last.parent;
@@ -117,7 +128,6 @@ public class Heap {
     }
     Node[] children = elem.children;
     last.children = children;
-
     ArrayList<Node> queue = new ArrayList();
     queue.add(last);
     while (queue.size() > 0) {
