@@ -41,7 +41,12 @@ public class Graph {
     }
   }
 
-
+  
+  /**
+   * Creates and adds new node with a specified index.
+   * @param index The index of the new node.
+   * @return The added node.
+   */
   public Node addNodeWithIndex(int index) {
     Node n = new Node(index);
     nodesByIndex.put(index, n);
@@ -49,6 +54,11 @@ public class Graph {
   }
 
 
+  /**
+   * Gets all neighbors indexex in an ArrayList.
+   * @param index The index of the node to get neighbors from.
+   * @return Array of all neighbor index or an empty array.
+   */
   public ArrayList<Integer> getNeighborIndexes(int index) {
     ArrayList<Integer> result = new ArrayList<Integer>();
     Node a = nodesByIndex.get(index);

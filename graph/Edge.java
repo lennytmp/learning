@@ -14,6 +14,12 @@ public class Edge {
   // Cost of passing throug the edge.
   public int cost;
 
+  /**
+   * Edge constructor, sets internal variables and adds itself to the from Node.
+   * @param from The starting node.
+   * @param to The ending node.
+   * @param cost The cost of getting from start to end.
+   */
   public Edge(Node from, Node to, int cost) {
     this.from = from;
     this.to = to;
