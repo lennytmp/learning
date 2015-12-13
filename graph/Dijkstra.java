@@ -1,5 +1,8 @@
 package graph;
 
+import java.util.ArrayList;
+import heap.Heap;
+
 public class Dijkstra {
 
 
@@ -18,5 +21,10 @@ public class Dijkstra {
 
 
   public static void getDistances(Graph graph, int from) {
+    Heap edgesQueue = new Heap(false);
+    ArrayList<Edge> fromEdges = graph.nodesByIndex.get(from).edges;
+    for (Edge e : fromEdges) {
+      System.out.println(e.to.index + " " + e.cost);
+    }
   }
 }

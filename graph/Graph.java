@@ -12,7 +12,7 @@ public class Graph {
 	int[][] adjList;
 
   // Hash table to store nodes by index. 
-  HashMap<Integer, Node> nodesByIndex = new HashMap<Integer, Node>();
+  public HashMap<Integer, Node> nodesByIndex = new HashMap<Integer, Node>();
 
 
   /**
@@ -38,7 +38,6 @@ public class Graph {
         to = addNodeWithIndex(toIndex);
       }
       Edge e = new Edge(from, to, cost);
-      from.addEdge(e);
     }
   }
 
@@ -59,52 +58,6 @@ public class Graph {
     ArrayList<Node> arr = a.getNeighbors();
     for (Node n : arr) {
       result.add(n.index);
-    }
-    return result;
-  }
-}
-
-
-// Edge class.
-class Edge {
-  // Edge starting and ending points.
-  Node from, to;
-
-  // Cost of passing throug the edge.
-  int cost;
-
-  public Edge(Node from, Node to, int cost) {
-    this.from = from;
-    this.to = to;
-    this.cost = cost;
-    this.from.addEdge(this);
-  }
-}
-
-
-// Node class.
-class Node {
-  // Index of the node.
-  int index;
-  
-  // Edges going from the node.
-  ArrayList<Edge> edges = new ArrayList<Edge>();
-
-
-  public Node(int index) {
-    this.index = index;
-  }
-
-
-  public void addEdge(Edge e) {
-    this.edges.add(e);
-  }
-
-  
-  public ArrayList<Node> getNeighbors() {
-    ArrayList<Node> result = new ArrayList<Node>();
-    for (Edge e : edges) {
-      result.add(e.to);
     }
     return result;
   }
