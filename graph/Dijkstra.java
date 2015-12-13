@@ -18,11 +18,11 @@ public class Dijkstra {
     int[][] adjList = {
       {1, 1, 2}, {1, 1, 4}, {1, 5, 3},
       {2, 1, 5},
-      {3, 3, 6},
+      {3, 3, 6}, {3, 8, 1},
       {5, 2, 3}
     };
     Graph graph = new Graph(adjList);
-    getDistances(graph, 1);
+    getDistances(graph, 3);
   }
 
   /**
