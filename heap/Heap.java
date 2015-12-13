@@ -78,6 +78,15 @@ public class Heap {
 
 
   /**
+   * Gets the top obj (root.obj) and removes it from the heap.
+   * @return The node with max value or null.
+   */
+  public Object pullTopObj() {
+    return this.pullTop().obj;
+  }
+
+
+  /**
    * Removes elements by index and returns it.
    * @param index Index of the node to remove.
    * @return Removed node.

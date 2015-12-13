@@ -3,9 +3,8 @@ package graph;
 import java.util.ArrayList;
 import heap.Heap;
 
+
 public class Dijkstra {
-
-
   /**
    * @param args Array of arguments for launching the program. Ignored.
    */
@@ -24,7 +23,9 @@ public class Dijkstra {
     Heap edgesQueue = new Heap(false);
     ArrayList<Edge> fromEdges = graph.nodesByIndex.get(from).edges;
     for (Edge e : fromEdges) {
-      System.out.println(e.to.index + " " + e.cost);
+      edgesQueue.addObj(e.cost, e);
     }
+    Edge next = (Edge)edgesQueue.pullTopObj();
+    System.out.println(next.to.index);
   }
 }
