@@ -37,7 +37,7 @@ public class Reverse {
    */
   public static LinkedList reverse1(LinkedList list, LinkedList reversed) {
     if (list.next == null) {
-      list.next = left;
+      list.next = reversed;
       return list;
     }
     LinkedList p2 = list.next.next;
