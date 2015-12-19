@@ -1,3 +1,7 @@
+/**
+ * Heap implementation.
+ */
+
 package heap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -5,10 +9,10 @@ import java.util.Arrays;
 
 
 public class Heap {
-  // Root element.
+  //Root element.
   Node root;
 
-  // If it's maxHeap. False means minHeap.
+  //If it's maxHeap. False means minHeap.
   boolean maxHeap;
 
   /**
