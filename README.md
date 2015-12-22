@@ -13,7 +13,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [DONE] Linked lists (reverse linked list)
 * [DONE] Heap
 * Set
-* Binary Trees
+* [DONE] Binary Trees
 * Tries
 * Stacks
 * Queues
@@ -37,7 +37,8 @@ This repository will contain implementation of classic algorithms and mock inter
 * remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * count the number of disjoint objects in a bitmap
 * implement a program which plays tic-tac-toe
-* Tree insert / find etc.
+* tree balancing
+* [DONE] Tree insert / find etc.
 
 ## Concepts
 * invariants
