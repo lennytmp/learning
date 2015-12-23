@@ -71,19 +71,19 @@ public class Reverse {
 
   /**
    * Recursively reverses the linked list.
-   * @param reminder Linked list left to reverse.
+   * @param remainder Linked list left to reverse.
    * @param reversed Already reversed part. 
    * @return Reversed linked list.
    */
-  public static LinkedList reverse3(LinkedList reminder, LinkedList reversed) {
+  public static LinkedList reverse3(LinkedList remainder, LinkedList reversed) {
     LinkedList tmp = null;
-    if (reminder.next != null) {
-      tmp = reminder.next;
-      reminder.next = reversed;
+    if (remainder.next != null) {
+      tmp = remainder.next;
+      remainder.next = reversed;
     } else {
-      reminder.next = reversed;
-      return reminder;
+      remainder.next = reversed;
+      return remainder;
     }
-    return reverse3(tmp, reminder);
+    return reverse3(tmp, remainder);
   }
 }
