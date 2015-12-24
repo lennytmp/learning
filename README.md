@@ -23,6 +23,8 @@ This repository will contain implementation of classic algorithms and mock inter
 * Map (Binary tree)
 * Circular buffer
 * Doubly Linked List
+* Bunch
+* Pool
 
 ## Algorithms
 * [DONE] Breadth first search

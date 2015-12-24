@@ -21,6 +21,19 @@ class LinkedList {
     this.value = value;
   }
 
+
+  /**
+   * Adds new value to the linked list by
+   * adding to in front of all other values.
+   * @param value The value to add.
+   */
+  public void add(int value) {
+    LinkedList second = new LinkedList(this.value);
+    second.next = this.next;
+    this.value = value;
+    this.next = second;
+  }
+
   /**
    * Returning printable version of the linked list.
    */
