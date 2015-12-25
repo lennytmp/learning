@@ -7,10 +7,10 @@ This repository will contain implementation of classic algorithms and mock inter
 * "Cracking the Coding Interview" by Gayle Laakmann McDowell
 
 ## Data structures
-* [DONE] Graphs
-* [DONE] Linked lists (reverse linked list)
-* [DONE] Heap
-* [DONE] Binary Trees
+* [Graph](graph/Graph.java)
+* [Linked lists](linkedlist/LinkedList.java)
+* [Heap](heap/Heap.java)
+* [Binary Trees](searchtree/SearchTree.java)
 * Doubly Linked List
 * Set
 * Tries
@@ -25,17 +25,18 @@ This repository will contain implementation of classic algorithms and mock inter
 * Pool
 
 ## Algorithms
-* [DONE] Breadth first search
-* [DONE] Depth first search
-* [DONE] Dijkstra Shortest Path
-* [DONE] Merge sort
-* [DONE] Quick sort
-* [DONE] Random Select
-* [DONE] Determenistic Select
-* [DONE] Min cut search in graphs
-* [DONE] Find in an array a subarray, which has the max sum of all elements.
-* [DONE] implement a program which plays tic-tac-toe
-* [DONE] Tree insert / find etc.
+* [Breadth first search](graph/ShortestPath.java)
+* [Depth first search](graph/FindCycle.java)
+* [Dijkstra Shortest Path](graph/Dijkstra.java)
+* [Merge sort](sorting/MergeSort.java)
+* [Quick sort](sorting/QuickSort.java)
+* [Random Select](selection/RandomSelect.java)
+* [Determenistic Select](selection/DeterministicSelect.java)
+* [Min cut search in graphs](graph/MinCut.java)
+* [Find in an array a subarray, which has the max sum of all elements](misc/MaxSubArray.java)
+* [A program which plays tic-tac-toe](games/TicTacToe.java)
+* [Tree insert / find etc.](searchtree/SearchTree.java)
+* [Reverse a linked list](linkedlist/Reverse.java)
 * Find cycle in the linked list (returning true or false)
 * Find cycle in the linked list (returning link to the first element in the cycle)
 * Checking if the code with different brackets is valid (recursive and with stack)
