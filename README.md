@@ -37,7 +37,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [A program which plays tic-tac-toe](games/TicTacToe.java)
 * [Tree insert / find etc.](searchtree/SearchTree.java)
 * [Reverse a linked list](linkedlist/Reverse.java)
-* Checking if the code with different brackets is valid (recursive and with stack)
+* [Checking if the code with different brackets is valid (recursive and with stack)](misc/BracketsChecker.java)
 * Find cycle in the linked list (returning true or false)
 * Find cycle in the linked list (returning link to the first element in the cycle)
 * Water spillage in the labyrinth
