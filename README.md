@@ -3,7 +3,7 @@
 This repository will contain implementation of classic algorithms and mock interview questions.
 
 ## Based on the following materials:
-* https://class.coursera.org/algo2-004/auth
+* [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
 * "Cracking the Coding Interview" by Gayle Laakmann McDowell
 
 ## Data structures
@@ -60,8 +60,8 @@ This repository will contain implementation of classic algorithms and mock inter
 
 
 ## Interesting to learn
-* (Parameters passing in java)[http://jonskeet.uk/java/passing.html]
-* http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02
-* https://www.youtube.com/playlist?list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf
-* http://gafferongames.com/networking-for-game-programmers/sending-and-receiving-packets/
-* https://class.coursera.org/algo-008/auth
+* [Parameters passing in java](http://jonskeet.uk/java/passing.html)
+* [Programming Paradigms (Stanford)](http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02)
+* [Game programming in Java](https://www.youtube.com/playlist?list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf)
+* [Sending and receiving packets](http://gafferongames.com/networking-for-game-programmers/sending-and-receiving-packets/)
+* [Algorithms: Design and Analysis, Part 2](https://class.coursera.org/algo2-004/auth)
