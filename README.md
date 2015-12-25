@@ -36,11 +36,12 @@ This repository will contain implementation of classic algorithms and mock inter
 * [DONE] Random Select
 * [DONE] Determenistic Select
 * [DONE] Min cut search in graphs
+* [DONE] Find in an array a subarray, which has the max sum of all elements.
+* [DONE] implement a program which plays tic-tac-toe
+* [DONE] Tree insert / find etc.
 * remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * count the number of disjoint objects in a bitmap
-* [DONE] implement a program which plays tic-tac-toe
 * tree balancing
-* [DONE] Tree insert / find etc.
 * Find biggest island in O(n*m) with recursion
 
 ## Concepts
