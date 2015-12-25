@@ -36,9 +36,9 @@ This repository will contain implementation of classic algorithms and mock inter
 * [DONE] Find in an array a subarray, which has the max sum of all elements.
 * [DONE] implement a program which plays tic-tac-toe
 * [DONE] Tree insert / find etc.
+* Checking if the code with different brackets is valid (recursive and with stack)
 * Find cycle in the linked list (returning true or false)
 * Find cycle in the linked list (returning link to the first element in the cycle)
-* Checking if the code with different brackets is valid (recursive and with stack)
 * Water spillage in the labyrinth
 * Binary search
 * remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
@@ -60,8 +60,12 @@ This repository will contain implementation of classic algorithms and mock inter
 
 
 ## Interesting to learn
-* (Parameters passing in java)[http://jonskeet.uk/java/passing.html]
+* http://codingbat.com/java
 * http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02
 * https://www.youtube.com/playlist?list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf
 * http://gafferongames.com/networking-for-game-programmers/sending-and-receiving-packets/
 * https://class.coursera.org/algo-008/auth
+
+
+### Done
+* (Parameters passing in java)[http://jonskeet.uk/java/passing.html]

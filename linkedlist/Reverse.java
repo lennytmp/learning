@@ -18,7 +18,7 @@ public class Reverse {
   public static void main(String[] args) {
     LinkedList a = new LinkedList(0);
     for (int i = 1; i < 50; i++) {
-      a.add(i);
+      a.push(i);
     }
     System.out.println(a);
     
