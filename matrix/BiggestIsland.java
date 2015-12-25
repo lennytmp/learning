@@ -2,26 +2,8 @@
  * Perfomrs search of the biggest "island" in a matrix.
  */
 
-package misc;
+package matrix;
 import java.util.ArrayList;
-
-
-//Class that represents one point in the initial matrix.
-class Point {
-	int x;
-	int y;
-
-  /**
-   * Constructor, assigning parameters to class properties.
-   * @param x X coordinate of the point.
-   * @param y Y coordinate of the point.
-   */
-	Point(int x, int y) {
-		this.x = x;
-		this.y = y;
-  }
-}
-
 
 //Class to implement the search for biggest island.
 public class BiggestIsland {
@@ -39,6 +21,7 @@ public class BiggestIsland {
       {1, 1, 0 , 1},
       {1, 0, 0 , 1}
     };
+    WaterSpillage.printMap(matrix);
     System.out.println(countBiggestIsland(matrix));
   }
 

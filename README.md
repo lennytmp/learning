@@ -28,7 +28,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Breadth first search](graph/ShortestPath.java)
 * [Depth first search](graph/FindCycle.java)
 * [Dijkstra Shortest Path](graph/Dijkstra.java)
-* [Finding biggest islands](matrix/BiggestIsland.java)
+* [Finding biggest island](matrix/BiggestIsland.java)
 * [Merge sort](array/MergeSort.java)
 * [Quick sort](array/QuickSort.java)
 * [Random Select](array/RandomSelect.java)
@@ -39,9 +39,9 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Tree insert / find etc.](searchtree/SearchTree.java)
 * [Reverse a linked list](linkedlist/Reverse.java)
 * [Checking if the code with different brackets is valid (recursive and with stack)](misc/BracketsChecker.java)
+* [Water spillage in the labyrinth](matrix/WaterSpillage.java)
 * Find cycle in the linked list (returning true or false)
 * Find cycle in the linked list (returning link to the first element in the cycle)
-* Water spillage in the labyrinth
 * Binary search
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
