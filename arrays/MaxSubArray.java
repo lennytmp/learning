@@ -2,7 +2,7 @@
  * Algorithm to find max sub array in an array.
  */
 
-package misc;
+package arrays;
 
 import java.util.Arrays;
 import java.util.ArrayList;

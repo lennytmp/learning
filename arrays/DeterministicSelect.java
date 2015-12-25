@@ -2,11 +2,9 @@
  * Performs Deterministic Select Algorithm.
  */
 
+package arrays;
 
-package selection;
 import java.util.Arrays;
-import sorting.MergeSort;
-
 
 public class DeterministicSelect {
 
@@ -102,7 +100,7 @@ public class DeterministicSelect {
     for (int i = from; (double)(i - from)/smLength < medians.length; i += smLength) {
 
       int smTo = Math.min(i + smLength - 1, to);
-      arr = sorting.QuickSort.sort(arr, i, smTo);
+      arr = QuickSort.sort(arr, i, smTo);
 
       int medianPos = i + divideRoundUp(smTo - i, 2);
       medians[divideRoundUp(i - from, smLength)] = arr[medianPos];

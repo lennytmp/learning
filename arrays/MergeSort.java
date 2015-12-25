@@ -2,8 +2,8 @@
  * Performs Merge Sort algorithm.
  */
 
+package arrays;
 
-package sorting;
 import java.util.Arrays;
 
 
