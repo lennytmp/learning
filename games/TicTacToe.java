@@ -1,5 +1,5 @@
 /**
- * Implementation of Tic Tac Toe game.
+ * Implements the Tic Tac Toe game.
  */
 
 package games;

@@ -1,5 +1,5 @@
 /**
- * Implementation of reversing the linked list.
+ * Implements reversing the linked list.
  */
 
 package linkedlist;

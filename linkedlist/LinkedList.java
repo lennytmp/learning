@@ -1,5 +1,5 @@
 /**
- * Implementation of the Linked List class.
+ * Implements the Linked List class.
  */
 
 package linkedlist;

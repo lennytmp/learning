@@ -1,5 +1,5 @@
 /**
- * Implementation of the algorithm to spread water in a labyrinth.
+ * Implements the algorithm to spread water in a labyrinth.
  */
 
 package matrix;
