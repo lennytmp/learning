@@ -41,6 +41,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [DONE] implement a program which plays tic-tac-toe
 * tree balancing
 * [DONE] Tree insert / find etc.
+* Find biggest island in O(n*m) with recursion
 
 ## Concepts
 * invariants
