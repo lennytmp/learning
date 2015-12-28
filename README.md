@@ -69,4 +69,5 @@ This repository will contain implementation of classic algorithms and mock inter
 
 
 ### Done
+* [Java Recursion exercises](http://codingbat.com/prob/p107330)
 * [Parameters passing in java](http://jonskeet.uk/java/passing.html)
