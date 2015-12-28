@@ -41,8 +41,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Checking if the code with different brackets is valid (recursive and with stack)](misc/BracketsChecker.java)
 * [Water spillage in the labyrinth](matrix/WaterSpillage.java)
 * [Binary search](array/BinarySearch.java)
-* Find cycle in the linked list (returning true or false)
-* Find cycle in the linked list (returning link to the first element in the cycle)
+* [Find cycle in the linked list (returning true or false)](linkedlist/FindCycle.java)
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
 * Tree balancing
