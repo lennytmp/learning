@@ -87,4 +87,26 @@ class FindCycle {
     seen.add(list);
     return hasCycle2(list.next, seen);
   }
+
+
+  /**
+   * Checks if list has a cycle by having two pointers.
+   * @param list The list to search cycle in.
+   * @return True if there is a cycle, false otherwise.
+   */
+  public static boolean hasCycle3(LinkedList list) {
+    if (list == null || list.next == null) {
+      return false;
+    }
+    LinkedList slow = list.next;
+    LinkedList fast = list.next.next;
+    while (slow != fast) {
+      if (slow.next == null || fast.next == null) {
+        return false;
+      }
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return true;
+  }
 }

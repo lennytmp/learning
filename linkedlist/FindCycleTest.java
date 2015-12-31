@@ -82,4 +82,20 @@ public class FindCycleTest extends junit.framework.TestCase {
       FindCycle.hasCycle2(a),
       true);
   }
+
+
+  public void testHasCycle3() {
+    LinkedList<Integer> a = smallesCycle();
+    assertEquals("has cycle in smallest cycled list",
+      FindCycle.hasCycle3(a),
+      true);
+    a = new LinkedList<Integer>(2);
+    assertEquals("doesn't have a cycle",
+      FindCycle.hasCycle3(a),
+      false);
+    a = generateCycled(); 
+    assertEquals("has cycle in a random graph",
+      FindCycle.hasCycle3(a),
+      true);
+  }
 }
