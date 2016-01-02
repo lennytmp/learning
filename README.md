@@ -45,6 +45,9 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Reverse linked list (hare and turtle)](linkedlist/FindCycle.java)
 * [Producer - Consumer problem](threads/ProdCons.java)
 * [Find biggest island in O(nm) with recursion](matrix/BiggestIsland.java)
+* [Given / 3, / 2, -1 operations find min num of steps to get 1 (top-down)](dp/MinStepsTo1.java)
+* Given / 3, / 2, -1 operations find min num of steps to get 1 (bottom-up)
+* Given / 3, / 2, -1 operations find min num of steps to get 1 (2 threads)
 * Find cycle in the linked list using two pointers, return start point
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
