@@ -4,6 +4,7 @@
 
 package matrix;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //Class to implement the search for biggest island.
 public class BiggestIsland {
@@ -17,12 +18,13 @@ public class BiggestIsland {
   public static void main(String[] args) {
     int[][] matrix = {
       {0, 1, 1 , 1},
-      {1, 0, 0 , 1},
+      {1, 0, 1 , 1},
       {1, 1, 0 , 1},
       {1, 0, 0 , 1}
     };
     WaterSpillage.printMap(matrix);
-    System.out.println(countBiggestIsland(matrix));
+    System.out.println(countBiggestIsland1(matrix));
+    System.out.println(countBiggestIsland2(matrix));
   }
 
 
@@ -31,7 +33,54 @@ public class BiggestIsland {
    * @param ocean The initial matrix to search in.
    * @return The number of points in the biggest island.
    */
-  static int countBiggestIsland(int[][] ocean) {
+  public static int countBiggestIsland2(int[][] ocean) {
+    int len = ocean.length, maxSize = 0;
+    int[][] visited = new int[len][len];
+    for (int x = 0; x < len; x++) {
+      for (int y = 0; y < len; y++) {
+        int size = countIsland(x, y, ocean, visited);
+        if (size > maxSize) {
+          maxSize = size;
+        }
+      }
+    }
+    return maxSize;
+  }
+
+
+  /**
+   * Gets the number of points in an island at x, y.
+   * @param x The x coordinate in an ocean. 
+   * @param y The y coordinate in an ocean. 
+   * @param ocean The initial matrix to search in.
+   * @param visited the matrix of same size as island, 1 if the point
+   * was previously analysed, 0 if not.
+   * @return The number of points in the biggest island.
+   */
+  public static int countIsland(int x, int y, int[][] ocean, int[][] visited) {
+    if (x < 0 || y < 0 || x >= ocean.length || y >= ocean.length) {
+      return 0;
+    }
+    if (visited[x][y] == 1) {
+      return 0;
+    }
+    if (ocean[x][y] == 0) {
+      return 0;
+    }
+    visited[x][y] = 1;
+    return 1 + countIsland(x + 1, y, ocean, visited) +
+      countIsland(x - 1, y, ocean, visited) +
+      countIsland(x, y + 1, ocean, visited) +
+      countIsland(x, y - 1, ocean, visited);
+  }
+
+
+  /**
+   * Counts the number points in the biggest island.
+   * @param ocean The initial matrix to search in.
+   * @return The number of points in the biggest island.
+   */
+  public static int countBiggestIsland1(int[][] ocean) {
     //Getting each point in a seperate island.
     ArrayList<ArrayList<Point>> islands = new ArrayList<ArrayList<Point>>();
     for (int x = 0, len = ocean.length; x < len; x++) {

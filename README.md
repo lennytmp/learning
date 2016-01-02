@@ -44,11 +44,11 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Find cycle in the linked list (returning true or false)](linkedlist/FindCycle.java)
 * [Reverse linked list (hare and turtle)](linkedlist/FindCycle.java)
 * [Producer - Consumer problem](threads/ProdCons.java)
+* [Find biggest island in O(nm) with recursion](matrix/BiggestIsland.java)
 * Reverse linked list with link to the start of the cycle using two pointers
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
 * Tree balancing
-* Find biggest island in O(n*m) with recursion
 
 ## Concepts
 * Invariants
