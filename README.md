@@ -43,6 +43,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Binary search](array/BinarySearch.java)
 * [Find cycle in the linked list (returning true or false)](linkedlist/FindCycle.java)
 * [Reverse linked list (hare and turtle)](linkedlist/FindCycle.java)
+* [Producer - Consumer problem](threads/ProdCons.java)
 * Reverse linked list with link to the start of the cycle using two pointers
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
