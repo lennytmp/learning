@@ -6,40 +6,39 @@ package dp;
 
 import java.util.ArrayList;
 
-class MinStepsTo1 {
+/**
+ * Class for each item in the queue.
+ */
+class QueueItem {
+  // Current value in an item.
+  int value;
+
+  // Number of steps to get to this value.
+  int curStep;
+
+  // How did we get here in a string.
+  String calcs;
+
   /**
-   * Class for each item in the queue.
+   * Constructor of an item, sets class properties.
+   * @param value Value of the item.
+   * @param curStep How many steps did it take to get to this value.
+   * @param calcs String representing how did we get here exactly.
    */
-  private static class QueueItem {
-    // Current value in an item.
-    int value;
-
-    // Number of steps to get to this value.
-    int curStep;
-
-    // How did we get here in a string.
-    String calcs;
-
-    /**
-     * Constructor of an item, sets class properties.
-     * @param value Value of the item.
-     * @param curStep How many steps did it take to get to this value.
-     * @param calcs String representing how did we get here exactly.
-     */
-    QueueItem(int value, int curStep, String calcs) {
-      this.value = value;
-      this.curStep = curStep;
-      this.calcs = calcs;
-    }
+  QueueItem(int value, int curStep, String calcs) {
+    this.value = value;
+    this.curStep = curStep;
+    this.calcs = calcs;
   }
+}
 
-
+class MinStepsTo1 {
   /**
    * Sets the number and calls the algorithm.
    * @param args Program arguments, unused.
    */
   public static void main(String[] args) {
-    int a = 92;
+    int a = 510;
     System.out.println("Steps to break " + a + ": " + getMinStepsTopDown(a));
     System.out.println("Steps to break " + a + ": " + getMinStepsBottomUp(a));
   }
