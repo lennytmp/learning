@@ -9,12 +9,12 @@ This repository will contain implementation of classic algorithms and mock inter
 ## Data structures
 * [Graph](graph/Graph.java)
 * [Linked lists](linkedlist/LinkedList.java)
+* [Stacks](linkedlist/LinkedList.java)
 * [Heap](heap/Heap.java)
 * [Binary Trees](searchtree/SearchTree.java)
 * Doubly Linked List
 * Set
 * Tries
-* Stacks
 * Queues
 * Priority Queue
 * Vectors / ArrayLists
@@ -57,13 +57,16 @@ This repository will contain implementation of classic algorithms and mock inter
 * Invariants
 * Finite automata
 * Bit manipulation
-* Singleton Design Pattern
 * Factory design pattern
 * Memory (Stack vs Heap)
-* Recursion
-* Big-O Time
-* Balancer
+
+
+### Done
 * Deadlock
+* Big-O Time
+* Recursion
+* Singleton Design Pattern
+
 
 
 ## Interesting to learn
