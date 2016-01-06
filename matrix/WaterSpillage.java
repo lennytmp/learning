@@ -21,9 +21,9 @@ class WaterSpillage {
       {1, 0, 1, 0, 0, 1},
       {1, 1, 1, 1, 1, 1},
     };
-    printMap(map);
+    MatrixMap.print(map);
     spillWater(map, new Point(1,1));
-    printMap(map);
+    MatrixMap.print(map);
   }
 
 
@@ -50,17 +50,4 @@ class WaterSpillage {
   }
 
 
-  /**
-   * Prints the map on the screen.
-   * @param map The map to print.
-   */
-  public static void printMap(int[][] map) {
-    for (int[] row : map) {
-      for (int value : row) {
-        System.out.print(value + " ");
-      }
-      System.out.println();
-    }
-    System.out.println();
-  }
 }

@@ -22,7 +22,7 @@ public class BiggestIsland {
       {1, 1, 0 , 1},
       {1, 0, 0 , 1}
     };
-    WaterSpillage.printMap(matrix);
+    MatrixMap.print(matrix);
     System.out.println(countBiggestIsland1(matrix));
     System.out.println(countBiggestIsland2(matrix));
   }

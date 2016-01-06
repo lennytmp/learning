@@ -27,10 +27,10 @@ class TopDown implements Runnable {
 
 
   /**
-   * Prints the result and calls the function to get the result.$
+   * Prints the result and calls the function to get the result.
    */
   public void run() {
-    System.out.println("TD: Steps to break " +$
+    System.out.println("TD: Steps to break " +
       this.searchingFor + ": " +
       getMinSteps());
   }
@@ -98,7 +98,7 @@ class BottomUp implements Runnable {
 
   // Flag to stop the thread.
   public static boolean finished = false;
- $
+ 
   // The queue to iterate through.
   private ArrayList<QueueItem> queue = new ArrayList<QueueItem>();
 
@@ -121,7 +121,7 @@ class BottomUp implements Runnable {
   /**
    * Iterates through the queue and adds to the queue
    * all variations from the current element, stops when
-   * finished variable is externally set to true.$
+   * finished variable is externally set to true.
    */
   public void run() {
     int i = 0;
@@ -173,7 +173,7 @@ class BottomUp implements Runnable {
  */
 class MinStepsTo1Comb {
   /**
-   * Sets the number and starts two threads.$
+   * Sets the number and starts two threads.
    * @param args Program arguments, unused.
    */
   public static void main(String[] args) {

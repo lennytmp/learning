@@ -51,6 +51,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * Find cycle in the linked list using two pointers, return start point
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
+* Paint houses so that 2 same colors never go together 
 * Tree balancing
 
 ## Concepts
