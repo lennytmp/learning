@@ -10,31 +10,23 @@ class Betting {
   public static void main(String[] args) {
     int totalSavings = 0;
     int initialBalance = 100;
-    for (int j = 0; j < 30000; j++) {
-      int i = 0;
+    int wins = 0;
+    for (int j = 0; j < 100000; j++) {
       balance = initialBalance;
-      savings = 0;
-      while (balance > 0) {
+      for (int k = 0; k < 2; k++) {
         int num = rnd.nextInt(1001);
-        int bet = Integer.max(1, initialBalance - balance);
-        if (bet > balance) {
-          savings += balance;
-          balance = 0;
-          break;
-        }
+        int bet = balance;
         if (num <= 495) {
           balance += bet;
         } else {
           balance -= bet;
         }
-        if (balance == 110) {
-          balance -= 10;
-          savings += 10;
+        if (balance > initialBalance) {
+          wins++;
+          break;
         }
-        i++;
       }
-      totalSavings += savings;
     }
-    System.out.println("3m invested, " + totalSavings + " saved.");
+    System.out.println("100k attempts, " + wins + " wins.");
   }
 }
