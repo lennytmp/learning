@@ -1,6 +1,6 @@
 package matrix;
 
-class MatrixMap {
+public class MatrixMap {
   /**
    * Prints the map on the screen.
    * @param map The map to print.
@@ -21,8 +21,8 @@ class MatrixMap {
    * @param map The map to print.
    */
   public static void print(char[][] map) {
-    for (int[] row : map) {
-      for (int value : row) {
+    for (char[] row : map) {
+      for (char value : row) {
         System.out.print(value + " ");
       }
       System.out.println();

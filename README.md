@@ -48,10 +48,10 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Given / 3, / 2, -1 operations find min num of steps to get 1 (top-down)](dp/MinStepsTo1.java)
 * [Given / 3, / 2, -1 operations find min num of steps to get 1 (bottom-up)](dp/MinStepsTo1.java)
 * [Given / 3, / 2, -1 operations find min num of steps to get 1 (2 threads)](dp/MinStepsTo1Comb.java)
+* [Paint houses so that 2 same colors never go together ](dp/HouseColor.java)
 * Find cycle in the linked list using two pointers, return start point
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
-* Paint houses so that 2 same colors never go together 
 * Tree balancing
 
 ## Concepts
@@ -60,6 +60,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * Bit manipulation
 * Factory design pattern
 * Memory (Stack vs Heap)
+* NP-complete problem
 
 
 ### Done
