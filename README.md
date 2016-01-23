@@ -2,9 +2,18 @@
 
 This repository will contain implementation of classic algorithms and mock interview questions.
 
+## TODO list
+* Ways to visulise algorithms
+* write checkers server in Java
+* backpack problem
+* optimistic problem
+* java concurrency vs threads
+* https://www.youtube.com/watch?v=WTVooKLLVT8
+
 ## Based on the following materials:
 * [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
 * "Cracking the Coding Interview" by Gayle Laakmann McDowell
+
 
 ## Data structures
 * [Graph](graph/Graph.java)
@@ -23,6 +32,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * Circular buffer
 * Bunch
 * Pool
+
 
 ## Algorithms
 * [Breadth first search](graph/ShortestPath.java)
@@ -54,6 +64,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * Count the number of disjoint objects in a bitmap
 * Tree balancing
 
+
 ## Concepts
 * Invariants
 * Finite automata
@@ -68,7 +79,6 @@ This repository will contain implementation of classic algorithms and mock inter
 * Big-O Time
 * Recursion
 * Singleton Design Pattern
-
 
 
 ## Interesting to learn
