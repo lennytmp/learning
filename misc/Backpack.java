@@ -3,8 +3,11 @@ package misc;
 
 import java.util.Random;
 import java.util.HashSet;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.Comparator;
+import java.util.Collections;
 
 
 public class Backpack {
@@ -28,6 +31,16 @@ public class Backpack {
     public int totalPrice = 0;
     public int totalWeight = 0;
     HashSet<Item> items = new HashSet<Item>();
+
+    public SetOfItems() {};
+
+    public SetOfItems(SetOfItems before, Item newElem) {
+      Iterator it = before.items.iterator();
+      while (it.hasNext()) {
+        this.add((Item)it.next());
+      }
+      this.add(newElem);
+    }
     
     public void add(Item i) {
       this.totalPrice += i.price;
@@ -41,10 +54,14 @@ public class Backpack {
     }
   }
 
+
   public static Random seed = new Random();
   public static final int CAPACITY = 10;
   public static final int ITEMS = 5;
   public static final int MAX_PRICE = 100;
+
+  public static HashMap<Integer, SetOfItems> setPerWeight = new HashMap<Integer, SetOfItems>();
+
 
   public static void main(String[] args) {
     System.out.println("Items:");
@@ -64,51 +81,42 @@ public class Backpack {
 
 
   public static SetOfItems getItemsToTake(LinkedList<Item> items) {
-    LinkedList<SetOfItems> options = new LinkedList<SetOfItems>();
+    Collections.sort(items, new Comparator<Item>() {
+      @Override
+      public int compare(Item a, Item b) {
+        return a.weight < b.weight ? -1 :
+          a.weight == b.weight ? 0 : 1;
+      }
+    });
     Iterator it = items.iterator();
     while (it.hasNext()) {
-      SetOfItems tmp = new SetOfItems();
-      tmp.add((Item)it.next());
-      options.add(tmp);
+      getItemsToTake(items, ((Item)it.next()).weight);
     }
-    boolean added = true;
-    while (added) {
-      it = options.iterator();
-      added = false;
-      while (it.hasNext()) {
-        SetOfItems variant = (SetOfItems)it.next();
-        Item next = getNextItem(items, variant);
-        if (next != null) {
-          variant.add(next);
-          added = true;
-        }
-      }
-    }
-    it = options.iterator();
-    SetOfItems result = null;
-    while (it.hasNext()) {
-      SetOfItems tmp = (SetOfItems)it.next();
-      if (result == null || result.totalPrice < tmp.totalPrice) {
-        result = tmp;
-      }
-    }
-    return result;
+    return getItemsToTake(items, CAPACITY);
   }
 
 
-  private static Item getNextItem(LinkedList<Item> items, SetOfItems taken) {
+  public static SetOfItems getItemsToTake(LinkedList<Item> items, int capacity) {
+    SetOfItems result = setPerWeight.get(capacity);
+    if (result != null) {
+      return result;
+    }
     Iterator it = items.iterator();
-    Item maxFitValue = null;
     while (it.hasNext()) {
-      Item current = (Item)it.next();
-      if (current.weight > CAPACITY - taken.totalWeight ||
-          taken.items.contains(current)) {
-        continue;
-      }
-      if (maxFitValue == null || maxFitValue.price < current.price) {
-        maxFitValue = current;
+      Item cur = (Item)it.next();
+      if (cur.weight <= capacity) {
+        SetOfItems tmp = getItemsToTake(items, capacity - cur.weight);
+        if (result == null ||
+            result.totalPrice < tmp.totalPrice + cur.price) {
+            result = new SetOfItems(tmp, cur);
+        }
       }
     }
-    return maxFitValue;
+    if (result == null) {
+      result = new SetOfItems();
+    }
+    System.out.println(">" + capacity + "kg: " + result);
+    setPerWeight.put(result.totalWeight, result);
+    return result;
   }
 }
