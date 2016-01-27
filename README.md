@@ -5,7 +5,6 @@ This repository will contain implementation of classic algorithms and mock inter
 ## TODO list
 * Ways to visulise algorithms
 * write checkers server in Java
-* backpack problem
 * optimistic problem
 * java concurrency vs threads
 * https://www.youtube.com/watch?v=WTVooKLLVT8
@@ -59,6 +58,7 @@ This repository will contain implementation of classic algorithms and mock inter
 * [Given / 3, / 2, -1 operations find min num of steps to get 1 (bottom-up)](dp/MinStepsTo1.java)
 * [Given / 3, / 2, -1 operations find min num of steps to get 1 (2 threads)](dp/MinStepsTo1Comb.java)
 * [Paint houses so that 2 same colors never go together ](dp/HouseColor.java)
+* [Backpack problem](misc/Backpack.java)
 * Find cycle in the linked list using two pointers, return start point
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap

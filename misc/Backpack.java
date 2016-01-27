@@ -4,10 +4,9 @@ package misc;
 import java.util.Random;
 import java.util.HashSet;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Iterator;
-import java.util.Comparator;
-import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Arrays;
 
 
 public class Backpack {
@@ -21,6 +20,8 @@ public class Backpack {
       this.weight = weight;
     }
 
+
+    @Override
     public String toString() {
       return "$" + this.price + " " + this.weight + "kg";
     }
@@ -28,11 +29,13 @@ public class Backpack {
 
 
   public static class SetOfItems {
-    public int totalPrice = 0;
-    public int totalWeight = 0;
+    public int price = 0;
+    public int weight = 0;
     HashSet<Item> items = new HashSet<Item>();
 
+
     public SetOfItems() {};
+
 
     public SetOfItems(SetOfItems before, Item newElem) {
       Iterator it = before.items.iterator();
@@ -42,15 +45,35 @@ public class Backpack {
       this.add(newElem);
     }
     
+
     public void add(Item i) {
-      this.totalPrice += i.price;
-      this.totalWeight += i.weight;
+      this.price += i.price;
+      this.weight += i.weight;
       this.items.add(i);
     }
 
+
+    @Override
     public String toString() {
-      return "$" + totalPrice + " " + totalWeight + "kg " +
+      return "$" + price + " " + weight + "kg " +
         items;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (!(obj instanceof SetOfItems)) {
+        return false;
+      }
+      SetOfItems objCasted = (SetOfItems)obj;
+      return objCasted.price == this.price &&
+        objCasted.weight == this.weight &&
+        objCasted.items.equals(this.items);
+    }
+    
+
+    @Override
+    public int hashCode() {
+        return items.hashCode();
     }
   }
 
@@ -65,58 +88,48 @@ public class Backpack {
 
   public static void main(String[] args) {
     System.out.println("Items:");
-    LinkedList<Item> items = new LinkedList<Item>();
+    Item[] items = new Item[ITEMS + 10];
     for (int i = 0; i < ITEMS; i++) {
       Item it = new Item(seed.nextInt(MAX_PRICE) + 1,
           seed.nextInt(CAPACITY) + 1);
-      items.add(it);
+      items[i] = it;
     }
     for (int i = 0; i < 10; i++) {
-      items.add(new Item(10, 1));
+      items[ITEMS + i] = new Item(10, 1);
     }
-    System.out.println(items);
-    SetOfItems taken = getItemsToTake(items);
+    System.out.println(Arrays.toString(items));
+    SetOfItems taken = getItemsToTake(items, CAPACITY);
     System.out.println("I decided to take: " + taken);
   }
 
-
-  public static SetOfItems getItemsToTake(LinkedList<Item> items) {
-    Collections.sort(items, new Comparator<Item>() {
-      @Override
-      public int compare(Item a, Item b) {
-        return a.weight < b.weight ? -1 :
-          a.weight == b.weight ? 0 : 1;
-      }
-    });
-    Iterator it = items.iterator();
-    while (it.hasNext()) {
-      getItemsToTake(items, ((Item)it.next()).weight);
-    }
-    return getItemsToTake(items, CAPACITY);
-  }
-
-
-  public static SetOfItems getItemsToTake(LinkedList<Item> items, int capacity) {
-    SetOfItems result = setPerWeight.get(capacity);
-    if (result != null) {
-      return result;
-    }
-    Iterator it = items.iterator();
-    while (it.hasNext()) {
-      Item cur = (Item)it.next();
-      if (cur.weight <= capacity) {
-        SetOfItems tmp = getItemsToTake(items, capacity - cur.weight);
-        if (result == null ||
-            result.totalPrice < tmp.totalPrice + cur.price) {
-            result = new SetOfItems(tmp, cur);
+  
+  public static SetOfItems getItemsToTake(Item[] items, int limit) {
+    HashMap<Integer, HashSet<SetOfItems>> variants = new HashMap<Integer, HashSet<SetOfItems>>();
+    HashSet<SetOfItems> zeroWeight = new HashSet<SetOfItems>();
+    SetOfItems nothing = new SetOfItems();
+    zeroWeight.add(nothing);
+    variants.put(0, zeroWeight);
+    SetOfItems maxSet = nothing;
+    for (int i = 1; i <= limit; i++) {
+      HashSet<SetOfItems> curWeightOptions = new HashSet<SetOfItems>();
+      for (Item it : items) {
+        HashSet<SetOfItems> tmp = variants.get(i - it.weight);
+        if (tmp != null) {
+          for (SetOfItems curSet : tmp) {
+            if (curSet.items.contains(it)) {
+              continue;
+            }
+            SetOfItems newSet = new SetOfItems(curSet, it);
+            curWeightOptions.add(newSet);
+            if (newSet.price > maxSet.price) {
+              maxSet = newSet;
+            }
+          }
         }
       }
+      variants.put(i, curWeightOptions);
+      System.out.println("Weight " + i + ": options added: " +  curWeightOptions.size());
     }
-    if (result == null) {
-      result = new SetOfItems();
-    }
-    System.out.println(">" + capacity + "kg: " + result);
-    setPerWeight.put(result.totalWeight, result);
-    return result;
+    return maxSet;
   }
 }
