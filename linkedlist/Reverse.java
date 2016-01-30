@@ -50,6 +50,9 @@ public class Reverse {
     reversed = reverse6(reversed);
     System.out.println(reversed);
     System.out.println("Recursive calls: " + recursiveCalls);
+
+    reversed = reverse7(reversed);
+    System.out.println(reversed);
   }
 
   /**
@@ -175,5 +178,24 @@ public class Reverse {
     last.next = a;
     a.next = null;
     return head;
+  }
+
+
+  public static LinkedList reverse7(LinkedList input) {
+    if (input  == null) {
+      return null;
+    }
+    LinkedList cur = input;
+    LinkedList tmp = null;
+    LinkedList result = null;
+    while (true) {
+      tmp = cur.next;
+      cur.next = result;
+      result = cur;
+      cur = tmp;
+      if (tmp == null) {
+        return result;
+      }
+    }
   }
 }
