@@ -1,17 +1,6 @@
 # Learning repository
 
-This repository will contain implementation of classic algorithms and mock interview questions.
-
-## TODO list
-* Ways to visulise algorithms
-* write checkers server in Java
-* optimistic problem
-* java concurrency vs threads
-* https://www.youtube.com/watch?v=WTVooKLLVT8
-
-## Based on the following materials:
-* [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
-* "Cracking the Coding Interview" by Gayle Laakmann McDowell
+This repository will contain implementation of classic algorithms, mock interview questions as well as different materials to prepare for SWE / SRE job.
 
 
 ## Data structures
@@ -69,9 +58,9 @@ This repository will contain implementation of classic algorithms and mock inter
 * Invariants
 * Finite automata
 * Bit manipulation
-* Factory design pattern
-* Memory (Stack vs Heap)
 * NP-complete problem
+* optimistic problem
+* java concurrency vs threads
 
 
 ### Done
@@ -79,13 +68,27 @@ This repository will contain implementation of classic algorithms and mock inter
 * Big-O Time
 * Recursion
 * Singleton Design Pattern
+* Factory design pattern
+* Memory (Stack vs Heap)
 
 
 ## Interesting to learn
-* [Programming Paradigms (Stanford)](http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02)
 * [Game programming in Java](https://www.youtube.com/playlist?list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf)
 * [Sending and receiving packets](http://gafferongames.com/networking-for-game-programmers/sending-and-receiving-packets/)
 * [Algorithms: Design and Analysis, Part 2](https://class.coursera.org/algo2-004/auth)
+* [Java Memory Model](https://www.youtube.com/watch?v=WTVooKLLVT8)
+* [Operating Systems and System Programming](https://www.youtube.com/watch?v=XgQo4JkN4Bw&list=PL3289DD0D0F0CD4A3)
+* [Technical guide from Google](https://www.google.com/about/careers/students/guide-to-technical-development.html)
+
+
+
+### In progress
+* [Networking](https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1)
+* [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
+* [Programming Paradigms (Stanford)](http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02)
+* Book: UNIX and Linux System Administration Handbook
+* "Cracking the Coding Interview" by Gayle Laakmann McDowell
+* Site Reliability Engineering: How Google Runs Production Systems
 
 
 ### Done
