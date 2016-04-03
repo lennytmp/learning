@@ -1,6 +1,6 @@
 # Learning repository
 
-This repository will contain implementation of classic algorithms, mock interview questions as well as different materials to prepare for SWE / SRE job.
+This repository contains implementation of classic algorithms, mock interview questions as well as different materials to prepare for SWE / SRE job.
 
 
 ## Data structures
@@ -79,6 +79,7 @@ This repository will contain implementation of classic algorithms, mock intervie
 * [Java Memory Model](https://www.youtube.com/watch?v=WTVooKLLVT8)
 * [Operating Systems and System Programming](https://www.youtube.com/watch?v=XgQo4JkN4Bw&list=PL3289DD0D0F0CD4A3)
 * [Technical guide from Google](https://www.google.com/about/careers/students/guide-to-technical-development.html)
+* TCP/IP Network Administration by By Craig Hunt
 
 
 
