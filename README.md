@@ -80,18 +80,19 @@ This repository contains implementation of classic algorithms, mock interview qu
 * [Operating Systems and System Programming](https://www.youtube.com/watch?v=XgQo4JkN4Bw&list=PL3289DD0D0F0CD4A3)
 * [Technical guide from Google](https://www.google.com/about/careers/students/guide-to-technical-development.html)
 * TCP/IP Network Administration by By Craig Hunt
+* POSIX
 
 
 
 ### In progress
-* [Networking](https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1)
 * [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
 * [Programming Paradigms (Stanford)](http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02)
 * Book: UNIX and Linux System Administration Handbook
-* "Cracking the Coding Interview" by Gayle Laakmann McDowell
 * Site Reliability Engineering: How Google Runs Production Systems
 
 
 ### Done
 * [Java Recursion exercises](http://codingbat.com/prob/p107330)
 * [Parameters passing in java](http://jonskeet.uk/java/passing.html)
+* [Networking](https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1)
+* "Cracking the Coding Interview" by Gayle Laakmann McDowell
