@@ -48,6 +48,7 @@ This repository contains implementation of classic algorithms, mock interview qu
 * [Given / 3, / 2, -1 operations find min num of steps to get 1 (2 threads)](dp/MinStepsTo1Comb.java)
 * [Paint houses so that 2 same colors never go together ](dp/HouseColor.java)
 * [Backpack problem](misc/Backpack.java)
+* [Given a target value and an array find three items that match it](misc/ThreeTarget.java)
 * Find cycle in the linked list using two pointers, return start point
 * Remove duplicates from a list of strings which is larger than the available memory (i.e. with reloads from disk)
 * Count the number of disjoint objects in a bitmap
@@ -77,7 +78,6 @@ This repository contains implementation of classic algorithms, mock interview qu
 * [Sending and receiving packets](http://gafferongames.com/networking-for-game-programmers/sending-and-receiving-packets/)
 * [Algorithms: Design and Analysis, Part 2](https://class.coursera.org/algo2-004/auth)
 * [Java Memory Model](https://www.youtube.com/watch?v=WTVooKLLVT8)
-* [Operating Systems and System Programming](https://www.youtube.com/watch?v=XgQo4JkN4Bw&list=PL3289DD0D0F0CD4A3)
 * [Technical guide from Google](https://www.google.com/about/careers/students/guide-to-technical-development.html)
 * TCP/IP Network Administration by By Craig Hunt
 * POSIX
@@ -85,6 +85,7 @@ This repository contains implementation of classic algorithms, mock interview qu
 
 
 ### In progress
+* [Operating Systems and System Programming](https://www.youtube.com/watch?v=1IcZB26STUE&list=PL-XXv-cvA_iBDyz-ba4yDskqMDY6A1w_c)
 * [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
 * [Programming Paradigms (Stanford)](http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02)
 * Book: UNIX and Linux System Administration Handbook
