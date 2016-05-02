@@ -65,6 +65,9 @@ This repository contains implementation of classic algorithms, mock interview qu
 
 
 ### Done
+* External Sorting
+* RPC calls
+* MapReduce
 * Deadlock
 * Big-O Time
 * Recursion
