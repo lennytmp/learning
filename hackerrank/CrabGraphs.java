@@ -23,13 +23,13 @@ public class CrabGraphs {
 }
 
 class ExtendedTree {
-    private Map<Integer, Vertex> nodesById = new HashMap<>();
+    private Map<Integer, Node> nodesById = new HashMap<>();
     private static final int SOURCE_ID = -1;
     private static final int DEST_ID = -2;
     private int vertexesNum, maxFeetNum, edgesNum;
     
     private class QueueElem {
-        public int curVertexId;
+        public int curNodeId;
         public LinkedHashSet<Integer> before;
         
         public QueueElem(int id) {
@@ -37,7 +37,7 @@ class ExtendedTree {
         }
         
         public QueueElem(int id, LinkedHashSet<Integer> before) {
-            curVertexId = id;
+            curNodeId = id;
             this.before = new LinkedHashSet<>(before);
         }
     }
@@ -46,8 +46,8 @@ class ExtendedTree {
         vertexesNum = sc.nextInt();
         maxFeetNum = sc.nextInt();
         edgesNum = sc.nextInt();
-        nodesById.put(SOURCE_ID, new Vertex(SOURCE_ID));
-        nodesById.put(DEST_ID, new Vertex(DEST_ID));
+        nodesById.put(SOURCE_ID, new Node(SOURCE_ID));
+        nodesById.put(DEST_ID, new Node(DEST_ID));
         for (int i = 0; i < edgesNum; i++) {
             int fromId = sc.nextInt();
             int toId = sc.nextInt();
@@ -93,8 +93,8 @@ class ExtendedTree {
         visited.add(fromId);
         while (queue.size() > 0) {
             QueueElem cur = queue.remove(0);
-            Vertex current = nodesById.get(cur.curVertexId);
-            if (toId == cur.curVertexId) {
+            Node current = nodesById.get(cur.curNodeId);
+            if (toId == cur.curNodeId) {
                 cur.before.add(toId);
                 return cur.before;
             }
@@ -102,7 +102,7 @@ class ExtendedTree {
             for (int childId : children) {
                 if (!visited.contains(childId) && current.hasCapacity(childId)) {
                     QueueElem q = new QueueElem(childId, cur.before);
-                    q.before.add(cur.curVertexId);
+                    q.before.add(cur.curNodeId);
                     visited.add(childId);
                     queue.add(q);
                 }
@@ -112,10 +112,10 @@ class ExtendedTree {
     }
     
     private void adjustHeadsCapacity() {
-        Vertex source = nodesById.get(SOURCE_ID);
+        Node source = nodesById.get(SOURCE_ID);
         Set<Integer> heads = source.getChildren();
         for (int id : heads) {
-            Vertex n = nodesById.get(id);
+            Node n = nodesById.get(id);
             int capacity = Math.min(maxFeetNum, n.getDegree());
             source.setCapacity(id, capacity);
         }
@@ -129,10 +129,10 @@ class ExtendedTree {
         nodesById.get(getHeadId(toId))
                  .addChild(getFootId(fromId));
         if (isEdgeInternal(fromId, toId)) {
-            Vertex toFoot = nodesById.get(getFootId(toId));
+            Node toFoot = nodesById.get(getFootId(toId));
             toFoot.addChild(getHeadId(fromId));
             toFoot.setCapacity(getHeadId(fromId), 0);
-            Vertex fromFoot = nodesById.get(getFootId(fromId));
+            Node fromFoot = nodesById.get(getFootId(fromId));
             fromFoot.addChild(getHeadId(toId));
             fromFoot.setCapacity(getHeadId(toId), 0);
         }
@@ -147,8 +147,8 @@ class ExtendedTree {
         int headId = getHeadId(index);
         int footId = getFootId(index);
         if (nodesById.get(headId) == null) {  
-            nodesById.put(headId, new Vertex(headId));
-            nodesById.put(footId, new Vertex(footId));
+            nodesById.put(headId, new Node(headId));
+            nodesById.put(footId, new Node(footId));
             nodesById.get(SOURCE_ID).addChild(headId);
             nodesById.get(footId).addChild(DEST_ID);
         }
@@ -163,12 +163,12 @@ class ExtendedTree {
     }
 }
 
-class Vertex {
+class Node {
     private int id;
     private static final int DEFAULT_CAPACITY = 1;
     private Map<Integer, Integer> capacityByChildId = new HashMap<>();
         
-    public Vertex(int index) {
+    public Node(int index) {
         id = index;
     }
     
