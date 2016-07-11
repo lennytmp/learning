@@ -28,31 +28,32 @@ public class Cipher {
         }
     }
     
-    static class EfficientReader {
-        private BufferedReader br;
-        
-        public EfficientReader(int bufferSize) throws IOException {
-            br = new BufferedReader(new InputStreamReader(System.in), bufferSize);
-        }
-        
-        public String next() throws IOException {
-            int c = (int)' ';
-            StringBuilder result = new StringBuilder();
-            while (" \r\n\t".indexOf((char)c) != -1) {
-                c = br.read();
-                if (c == -1) {
-                    return null;
-                }
+}
+
+class EfficientReader {
+    private BufferedReader br;
+    
+    public EfficientReader(int bufferSize) throws IOException {
+        br = new BufferedReader(new InputStreamReader(System.in), bufferSize);
+    }
+    
+    public String next() throws IOException {
+        int c = (int)' ';
+        StringBuilder result = new StringBuilder();
+        while (" \r\n\t".indexOf((char)c) != -1) {
+            c = br.read();
+            if (c == -1) {
+                return null;
             }
-            while (c != -1 && " \r\n\t".indexOf((char)c) == -1) {
-                result.append((char)c);
-                c = br.read();
-            }
-            return result.toString();
         }
-        
-        public int nextInt() throws IOException {
-            return Integer.parseInt(next());
+        while (c != -1 && " \r\n\t".indexOf((char)c) == -1) {
+            result.append((char)c);
+            c = br.read();
         }
+        return result.toString();
+    }
+    
+    public int nextInt() throws IOException {
+        return Integer.parseInt(next());
     }
 }
