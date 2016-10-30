@@ -60,11 +60,8 @@ This repository contains implementation of classic algorithms, mock interview qu
 * Finite automata
 * Bit manipulation
 * NP-complete problem
-* optimistic problem
-* java concurrency vs threads
-
-
-### Done
+* Optimistic problem
+* Java concurrency vs threads
 * External Sorting
 * RPC calls
 * MapReduce
@@ -76,27 +73,25 @@ This repository contains implementation of classic algorithms, mock interview qu
 * Memory (Stack vs Heap)
 
 
-## Interesting to learn
-* [Game programming in Java](https://www.youtube.com/playlist?list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf)
-* [Sending and receiving packets](http://gafferongames.com/networking-for-game-programmers/sending-and-receiving-packets/)
-* [Algorithms: Design and Analysis, Part 2](https://class.coursera.org/algo2-004/auth)
-* [Java Memory Model](https://www.youtube.com/watch?v=WTVooKLLVT8)
-* [Technical guide from Google](https://www.google.com/about/careers/students/guide-to-technical-development.html)
-* TCP/IP Network Administration by By Craig Hunt
-* POSIX
+## Materials
 
-
-
-### In progress
-* [Operating Systems and System Programming](https://www.youtube.com/watch?v=1IcZB26STUE&list=PL-XXv-cvA_iBDyz-ba4yDskqMDY6A1w_c)
+### SWE
+* Cracking the Coding Interview by Gayle Laakmann McDowell
 * [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
+* [Algorithms: Design and Analysis, Part 2](https://class.coursera.org/algo2-004/auth)
 * [Programming Paradigms (Stanford)](http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02)
-* Book: UNIX and Linux System Administration Handbook
-* Site Reliability Engineering: How Google Runs Production Systems
-
-
-### Done
 * [Java Recursion exercises](http://codingbat.com/prob/p107330)
 * [Parameters passing in java](http://jonskeet.uk/java/passing.html)
+* [Game programming in Java](https://www.youtube.com/playlist?list=PLlrATfBNZ98eOOCk2fOFg7Qg5yoQfFAdf)
+* [Java Memory Model](https://www.youtube.com/watch?v=WTVooKLLVT8)
+
+### SRE
+* The Linux Programming Interface: A Linux and UNIX System Programming Handbook
+* Site Reliability Engineering: How Google Runs Production Systems
+* Hack The Kernel at ops-class.org
+* [Operating Systems and System Programming](https://www.youtube.com/watch?v=1IcZB26STUE&list=PL-XXv-cvA_iBDyz-ba4yDskqMDY6A1w_c)
 * [Networking](https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1)
-* "Cracking the Coding Interview" by Gayle Laakmann McDowell
+* UNIX and Linux System Administration Handbook
+* [Sending and receiving packets](http://gafferongames.com/networking-for-game-programmers/sending-and-receiving-packets/)
+* [Technical guide from Google](https://www.google.com/about/careers/students/guide-to-technical-development.html)
+* TCP/IP Network Administration by By Craig Hunt
