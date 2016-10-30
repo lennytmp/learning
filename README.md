@@ -77,8 +77,10 @@ This repository contains implementation of classic algorithms, mock interview qu
 
 ### SWE
 * Cracking the Coding Interview by Gayle Laakmann McDowell
+* [Hackerrank - interactive problem solving](https://www.hackerrank.com/)
 * [Algorithms: Design and Analysis, Part 1](https://class.coursera.org/algo-008/auth)
 * [Algorithms: Design and Analysis, Part 2](https://class.coursera.org/algo2-004/auth)
+* [Project Euler - interactive problem solving](https://projecteuler.net/)
 * [Programming Paradigms (Stanford)](http://www.youtube.com/watch?v=Ps8jOj7diA0&list=PL9D558D49CA734A02)
 * [Java Recursion exercises](http://codingbat.com/prob/p107330)
 * [Parameters passing in java](http://jonskeet.uk/java/passing.html)
