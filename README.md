@@ -88,6 +88,8 @@ This repository contains implementation of classic algorithms, mock interview qu
 ### SRE
 * The Linux Programming Interface: A Linux and UNIX System Programming Handbook
 * Site Reliability Engineering: How Google Runs Production Systems
+* [Linux Administration games](http://overthewire.org/wargames/)
+* [Bash scripting guide](http://guide.bash.academy/)
 * [Yandex.Root 2010 Q&A - RU lang](https://academy.yandex.ru/events/system_administration/root-2010/)
 * [Hack The Kernel at ops-class.org](https://www.ops-class.org/)
 * [Operating Systems and System Programming](https://www.youtube.com/watch?v=1IcZB26STUE&list=PL-XXv-cvA_iBDyz-ba4yDskqMDY6A1w_c)
