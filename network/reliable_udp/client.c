@@ -35,7 +35,7 @@ int open_tcp_socket() {
   return fd;
 }
 
-int open_udp_socket() {
+int udp_open_socket() {
   int fd;
   if ((fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1) {
     die("udp socket");
@@ -46,23 +46,9 @@ int open_udp_socket() {
   if (setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0) {
     die("udp setsockopt");
   }
-  return fd;
-}
 
-int main(void) {
-  // Opens UDP port, connects to the server
-  // Reads lines from stdin
-  // Sends lines to Server
-  // Receives ACKs
   struct sockaddr_in si_other;
   int s, i, slen = sizeof(si_other);
-  int cur_msg = 0;
-  char message[MSG_MAX_LEN];
-  char buf_packet[PACKET_SIZE];
-  char buf_reply[HEADER_SIZE];
-  char message_acked = 0;
-
-  s = open_udp_socket();
   memset((char *) &si_other, 0, sizeof(si_other));
   si_other.sin_family = AF_INET;
   si_other.sin_port = htons(UDP_PORT);
@@ -71,43 +57,59 @@ int main(void) {
     fprintf(stderr, "inet_aton() failed\n");
     exit(1);
   }
+  return fd;
+}
 
+void udp_send(int udp_fd, char[] message) {
+  // Opens UDP port, connects to the server
+  // Reads lines from stdin
+  // Sends lines to Server
+  // Receives ACKs
+  int cur_msg = 0;
+  char message[MSG_MAX_LEN];
+  char buf_packet[PACKET_SIZE];
+  char buf_reply[HEADER_SIZE];
+  char message_acked = 0;
+
+  memset(buf_packet,'\0', PACKET_SIZE);
+  int net_cur_msg = htonl(cur_msg);
+  for (i = 0; i < sizeof(int); i++) {
+    buf_packet[i] = ((char *)&net_cur_msg)[i];
+  }
+  for (i = 0; i < strlen(message); i++) {
+    buf_packet[HEADER_SIZE + i] = message[i];
+  }
+
+  message_acked = 0;
+  while (message_acked == 0) {
+    if (sendto(udp_fd, buf_packet, strlen(message) + HEADER_SIZE, 0,
+        (struct sockaddr *) &si_other, slen)==-1) {
+      die("sendto");
+    }
+    if (recvfrom(udp_fd, buf_reply, HEADER_SIZE, 0, (struct sockaddr *) &si_other, &slen) != -1) {
+      if ((int)*buf_reply == cur_msg) {
+        printf("ack for message %d recieved\n", cur_msg);
+        message_acked = 1;
+      }
+    } else {
+      if (errno == 11 /* EAGAIN */) {
+        printf("Timeout reached, retrying\n");
+        fflush(stdout);
+      } else {
+        die("recvfrom");
+      }
+    }
+  }
+  cur_msg++;
+}
+ 
+int main(void) {
+  udp_fd = udp_open_socket();
+  // tcp_in = open_tcp();
   while(1) {
     memset(message, '\0', MSG_MAX_LEN);
     read(STDIN_FILENO, message, MSG_MAX_LEN);
-
-    memset(buf_packet,'\0', PACKET_SIZE);
-    int net_cur_msg = htonl(cur_msg);
-    for (i = 0; i < sizeof(int); i++) {
-      buf_packet[i] = ((char *)&net_cur_msg)[i];
-    }
-    for (i = 0; i < strlen(message); i++) {
-      buf_packet[HEADER_SIZE + i] = message[i];
-    }
-
-    message_acked = 0;
-    while (message_acked == 0) {
-      if (sendto(s, buf_packet, strlen(message) + HEADER_SIZE, 0,
-          (struct sockaddr *) &si_other, slen)==-1) {
-        die("sendto");
-      }
-      if (recvfrom(s, buf_reply, HEADER_SIZE, 0, (struct sockaddr *) &si_other, &slen) != -1) {
-        if ((int)*buf_reply == cur_msg) {
-          printf("ack for message %d recieved\n", cur_msg);
-          message_acked = 1;
-        }
-      } else {
-        if (errno == 11 /* EAGAIN */) {
-          printf("Timeout reached, retrying\n");
-          fflush(stdout);
-        } else {
-          die("recvfrom");
-        }
-      }
-    }
-    cur_msg++;
+    udp_send(udp_fd, message);
   }
-
-  close(s);
-  return 0;
+  close(udp_fd);
 }
