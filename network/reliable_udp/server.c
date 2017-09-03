@@ -40,14 +40,14 @@ int main(void) {
   while(1) {
     if ((recv_len = recvfrom(s, buf, BUFLEN, 0,
         (struct sockaddr *) &si_other, &slen)) == -1) {
-      die("recvfrom()");
+      die("recvfrom");
     }
     cur_msg = get_msg_id(buf);
-    printf("Received message %d from %s:%d\n",
+    printf("SERVER: Received message %d from %s:%d\n",
            cur_msg,
            inet_ntoa(si_other.sin_addr),
            ntohs(si_other.sin_port));
-    printf("Data:");
+    printf("SERVER: Data:");
     fflush(stdout);
     write(STDOUT_FILENO, (char *)&buf[sizeof(int)], recv_len - sizeof(int));
     printf("\n");
@@ -55,10 +55,11 @@ int main(void) {
     sleep(3); // lattency causer :)
     if (sendto(s, &cur_msg, sizeof(int), 0,
         (struct sockaddr*) &si_other, slen) == -1) {
-      die("sendto()");
+      die("sendto");
     }
     cur_msg++;
   }
   close(s);
   return 0;
-}
+} 
+

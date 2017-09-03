@@ -14,11 +14,19 @@
 #define TCP_PORT 2222   //The port on which to send data
 #define TIMEOUT_SEC 2
 
+// Structure to keep the connection properties in.
+typedef struct {
+  struct sockaddr_in connection;
+  int fd;
+  int cur_msg;
+} Connection;
+
 void die(char *s) {
   perror(s);
   exit(1);
 }
 
+// This function will start listening on TCP port, not working yet.
 int open_tcp_socket() {
   int fd;
   if ((fd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1) {
@@ -35,81 +43,87 @@ int open_tcp_socket() {
   return fd;
 }
 
-int udp_open_socket() {
-  int fd;
-  if ((fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1) {
-    die("udp socket");
+// Opens UDP connection with the server.
+Connection udp_open() {
+  Connection conn;
+  if ((conn.fd = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1) {
+    die("socket");
   }
   struct timeval tv;
   tv.tv_sec = TIMEOUT_SEC;
   tv.tv_usec = 0;
-  if (setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0) {
-    die("udp setsockopt");
+  if (setsockopt(conn.fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv)) < 0) {
+    die("setsockopt");
   }
 
-  struct sockaddr_in si_other;
-  int s, i, slen = sizeof(si_other);
-  memset((char *) &si_other, 0, sizeof(si_other));
-  si_other.sin_family = AF_INET;
-  si_other.sin_port = htons(UDP_PORT);
+  int s, i, slen = sizeof(conn.connection);
+  memset((char *) &conn.connection, 0, sizeof(conn.connection));
+  conn.connection.sin_family = AF_INET;
+  conn.connection.sin_port = htons(UDP_PORT);
 
-  if (inet_aton(SERVER, &si_other.sin_addr) == 0) {
-    fprintf(stderr, "inet_aton() failed\n");
-    exit(1);
+  if (inet_aton(SERVER, &conn.connection.sin_addr) == 0) {
+    die("inet_aton");
   }
-  return fd;
+  conn.cur_msg = 0;
+  return conn;
 }
 
-void udp_send(int udp_fd, char[] message) {
-  // Opens UDP port, connects to the server
-  // Reads lines from stdin
-  // Sends lines to Server
-  // Receives ACKs
-  int cur_msg = 0;
-  char message[MSG_MAX_LEN];
+// Reliably sends the message over UDP connection by by requiring ACK for
+// each message.
+void udp_send(Connection* conn, char message[], int msg_len) {
+  // TOOD(lennytmp): this should accept any message length and iterate over it.
   char buf_packet[PACKET_SIZE];
-  char buf_reply[HEADER_SIZE];
-  char message_acked = 0;
-
   memset(buf_packet,'\0', PACKET_SIZE);
-  int net_cur_msg = htonl(cur_msg);
+  int net_cur_msg = htonl(conn->cur_msg);
+
+  int i;
   for (i = 0; i < sizeof(int); i++) {
     buf_packet[i] = ((char *)&net_cur_msg)[i];
   }
-  for (i = 0; i < strlen(message); i++) {
+  for (i = 0; i < msg_len; i++) {
     buf_packet[HEADER_SIZE + i] = message[i];
   }
 
-  message_acked = 0;
+  char message_acked = 0;
+  int slen = sizeof(conn->connection); 
+  char buf_reply[HEADER_SIZE];
   while (message_acked == 0) {
-    if (sendto(udp_fd, buf_packet, strlen(message) + HEADER_SIZE, 0,
-        (struct sockaddr *) &si_other, slen)==-1) {
+    if (sendto(conn->fd, buf_packet, msg_len + HEADER_SIZE, 0,
+          (struct sockaddr *) &conn->connection, slen)==-1) {
       die("sendto");
     }
-    if (recvfrom(udp_fd, buf_reply, HEADER_SIZE, 0, (struct sockaddr *) &si_other, &slen) != -1) {
-      if ((int)*buf_reply == cur_msg) {
-        printf("ack for message %d recieved\n", cur_msg);
+    if (recvfrom(conn->fd, buf_reply, HEADER_SIZE, 0,
+          (struct sockaddr *) &conn->connection, &slen) != -1) {
+      if ((int)*buf_reply == conn->cur_msg) {
+        printf("CLIENT: Ack for message %d recieved\n", conn->cur_msg);
+        fflush(stdout);
         message_acked = 1;
       }
     } else {
       if (errno == 11 /* EAGAIN */) {
-        printf("Timeout reached, retrying\n");
+        printf("CLIENT: Timeout reached, retrying\n");
         fflush(stdout);
       } else {
         die("recvfrom");
       }
     }
   }
-  cur_msg++;
+  conn->cur_msg++;
 }
  
 int main(void) {
-  udp_fd = udp_open_socket();
+  Connection udp = udp_open();
   // tcp_in = open_tcp();
+  char message[MSG_MAX_LEN];
   while(1) {
     memset(message, '\0', MSG_MAX_LEN);
-    read(STDIN_FILENO, message, MSG_MAX_LEN);
-    udp_send(udp_fd, message);
+    int msg_len = read(STDIN_FILENO, message, MSG_MAX_LEN);
+    if (msg_len < 0) {
+      die("Read error");
+    } else {
+      udp_send(&udp, message, msg_len);
+    }
   }
-  close(udp_fd);
+  close(udp.fd);
 }
+
